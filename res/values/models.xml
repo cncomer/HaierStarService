@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="model_my_idcard">我的名片</string>
+	<string name="model_new_baoxiucard">新建保修卡</string>
+    <string name="model_my_business">互动商圈</string>
+    <string name="model_my_messages">消息中心</string>
+    <string name="model_my_store">我的微店</string>
+    
+    
+    <drawable name="model_my_idcard_n">#ff165ec0</drawable>
+    <drawable name="model_my_idcard_p">#ff092449</drawable>
+    
+    <drawable name="model_new_baoxiucard_n">#ff33dde3</drawable>
+    <drawable name="model_new_baoxiucard_p">#ff186568</drawable>
+    
+    <drawable name="model_my_business_n">#ff14c118</drawable>
+    <drawable name="model_my_business_p">#ff0a5d0c</drawable>
+    
+    <drawable name="model_my_messages_n">#ff6a16c0</drawable>
+    <drawable name="model_my_messages_p">#ff270847</drawable>
+    
+    <drawable name="model_my_store_n">#ffdabb0f</drawable>
+    <drawable name="model_my_store_p">#ffdabb0f</drawable>
+</resources>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="qr_content">
+		<item>URL</item>
+		<item>E-mail address</item>
+		<item>数字名片</item>
+		<item>Geographic information</item>
+		<item>Wifi Network config</item>
+	</string-array>
+	
+	<string-array name="wifi_type">
+		<item>WEP</item>
+		<item>WPA/WPA2</item>
+		<item>No encryption</item>
+	</string-array>
+	<string-array name="wifi_value">
+		<item>WEP</item>
+		<item>WPA</item>
+		<item>nopass</item>
+	</string-array>
+	
+	<string-array name="monthOfYear">
+		<item>01</item>
+		<item>02</item>
+		<item>03</item>
+		<item>04</item>
+		<item>05</item>
+		<item>06</item>
+		<item>07</item>
+		<item>08</item>
+		<item>09</item>
+		<item>10</item>
+		<item>11</item>
+		<item>12</item>
+	</string-array>
+	<!-- 打电话 发短信 -->
+	<string-array name="phoneClickableSpan">
+		<item>@string/text_call</item>
+		<item>@string/text_sms</item>
+	</string-array>
+	
+	<string-array name="picture_op_items">
+	    <item>@string/menu_picture_gallery</item>
+	    <item>@string/menu_picture_camera</item>
+	</string-array>
+	
+	<string-array name="bill_op_items">
+	    <item>@string/menu_bill_show</item>
+	    <item>@string/menu_bill_edit</item>
+	</string-array>
+	<string-array name="avator_op_items">
+	    <item>@string/menu_goods_preview</item>
+	    <item>@string/menu_goods_capture</item>
+	</string-array>
+	<string-array name="buy_places">
+		<item>@string/buy_place_1</item>
+		<item>@string/buy_place_2</item>
+		<item>@string/buy_place_3</item>
+		<item>@string/buy_place_4</item>
+		<item>@string/buy_place_5</item>
+		<item>@string/buy_place_6</item>
+		<item>@string/buy_place_7</item>
+		<item>@string/buy_place_8</item>
+		<item>@string/buy_place_9</item>
+		<item>@string/buy_place_10</item>
+	</string-array>
+	<string-array name="yanbao_times">
+		<item>@string/one_year</item>
+		<item>@string/two_year</item>
+		<item>@string/three_year</item>
+	</string-array>
+</resources>

@@ -1,0 +1,4 @@
+<resources>
+   <dimen name="ads_height">279dp</dimen>
+   <dimen name="ads_width">480dp</dimen>
+</resources>

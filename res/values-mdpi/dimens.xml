@@ -1,0 +1,35 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dip</dimen>
+    <dimen name="activity_vertical_margin">16dip</dimen>
+    
+    <dimen name="default_color_button_height">40dip</dimen>
+    <dimen name="ads_height">186dip</dimen>
+    <dimen name="ads_width">320dp</dimen>
+    
+     <dimen name="title_logo_height">60dip</dimen>
+    <dimen name="title_scan_height">50dip</dimen>
+    
+     <dimen name="login_title_logo_height">65dip</dimen>
+    <dimen name="login_title_logo_width">320dip</dimen>
+    
+    <dimen name="title_my_product_left_margin">15dip</dimen>
+     <dimen name="title_my_product_right_margin">15dip</dimen>
+     
+     <!-- 320 x 0.4 - title_my_product_left_margin -->
+     <dimen name="title_my_product_width">113dip</dimen>
+     <dimen name="title_my_product_deadline_width">100dip</dimen>
+     <dimen name="title_my_product_repair_width">48dip</dimen>
+     
+     <dimen name="product_repair_avator_width">150dip</dimen>
+     <dimen name="product_repair_avator_height">100dip</dimen>
+     
+     <dimen name="product_preview_avator_width">70dip</dimen>
+     <dimen name="product_preview_avator_height">70dip</dimen>
+     
+     <dimen name="province_textsize">12sp</dimen>
+     <dimen name="province_vertical_space">30dip</dimen>
+     <dimen name="province_columnWidth">80dip</dimen>
+
+</resources>

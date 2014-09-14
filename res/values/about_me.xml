@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="about_title">名档网</string>
+<string name="about_content">\
+这是一款名档网的手机端软件。目前包含了数字名片的扫描、识别、保存等功能。而且其中的拍一下可以扫描二维码、一维码，扫描速度快，完全可以媲美任何一款二维码扫描软件。从纸质名片到数字名片是科技发展的必然趋势，快来名档网免费申领自己的数字名片吧。
+\n\n\
+如果您有什么意见和建议，请联系我们，感谢使用。\n\
+邮箱：mingdown@live.cn\n\
+客服qq:103947688\n\
+电话：021-66302502 名档网
+</string>
+</resources>

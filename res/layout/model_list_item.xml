@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:paddingLeft="30dip"
+    android:paddingRight="30dip"
+    android:paddingTop="6dip"
+    android:paddingBottom="6dip"
+    android:layout_height="wrap_content" >
+
+    <ImageView android:id="@+id/model_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/model_my_card"/>
+
+    <TextView android:id="@+id/model_name"
+        android:layout_width="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/model_icon"
+        android:layout_toLeftOf="@+id/model_flag"
+        android:text="@string/model_my_idcard"
+        android:textSize="16sp"
+        android:layout_marginLeft="30dip"
+        android:layout_marginRight="30dip"
+        android:textColor="@color/model_text"
+        android:layout_height="wrap_content" />
+
+    <ImageView 
+        android:id="@+id/model_flag"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content"
+        android:src="@drawable/flag_arrow_r" />
+
+</RelativeLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/title_logo_height"
+    android:orientation="horizontal"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@color/light_black"
+    android:id="@+id/title_bar_layout" >
+
+    <ImageView android:id="@+id/button_back"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:scaleType="fitCenter"
+        android:clickable="true"
+        android:src="@drawable/top_arrow_left_btn"/>
+
+    <View android:layout_width="1dip"
+        android:background="#ff555d6a"
+        android:layout_height="fill_parent"/>
+    <TextView android:id="@+id/title"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="#ffffffff"
+        android:textSize="16sp"
+        android:layout_marginLeft="4dip"
+        android:layout_marginRight="4dip"
+        android:gravity="center"
+        android:singleLine="true"/>
+    <ImageView android:id="@+id/button_right"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:scaleType="fitCenter"
+        android:clickable="true"
+        android:visibility="invisible"
+        android:src="@drawable/top_arrow_left_btn"/>
+</LinearLayout>

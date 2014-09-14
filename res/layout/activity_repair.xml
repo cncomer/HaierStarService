@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="#ffffffff"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/title_logo"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/title_logo_height"
+        android:scaleType="fitXY"
+        android:src="@drawable/top" />
+
+    <include layout="@layout/common_button_title" />
+
+    <ScrollView android:id="@+id/scrollview"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_marginLeft="@dimen/title_my_product_left_margin"
+        android:layout_marginRight="@dimen/title_my_product_left_margin"
+        android:layout_marginTop="10dip"
+        android:layout_weight="1.0"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/product"
+                style="@style/ProductInfo"
+                android:layout_width="fill_parent"
+                android:textColor="#ff000000" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:layout_marginTop="10dip"
+                android:background="@color/light_gray" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <include
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    layout="@layout/product_repair_info" />
+
+                <ImageView
+                    android:id="@+id/avator"
+                    android:layout_width="@dimen/product_repair_avator_width"
+                    android:layout_height="@dimen/product_repair_avator_height"
+                    android:layout_marginLeft="4dip"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/ProductInfo"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dip"
+                android:clickable="true"
+                android:text="@string/title_more_message"
+                android:textColor="#fff95462" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:layout_marginTop="10dip"
+                android:background="@color/light_gray" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:gravity="right"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/button_qa"
+                    style="@style/DefaultShapeButton"
+                    android:text="@string/button_qa" />
+
+                <Button
+                    android:id="@+id/button_call_repair"
+                    style="@style/DefaultShapeButton"
+                    android:layout_marginLeft="10dip"
+                    android:text="@string/button_call_repair" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:layout_marginTop="10dip"
+                android:background="@color/light_gray" />
+
+            <TextView
+                style="@style/ProductInfo"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dip"
+                android:clickable="true"
+                android:text="@string/button_ask_online"
+                android:textColor="#fff95462" />
+
+            <EditText
+                android:id="@+id/product_ask_online_input"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:background="@color/light_gray"
+                android:gravity="left|top"
+                android:maxHeight="300dip"
+                android:maxLength="1024"
+                android:minLines="4" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_voice" />
+
+                <Button
+                    android:id="@+id/button_speek"
+                    style="@style/DefaultShapeButton.Red"
+                    android:layout_width="180dip"
+                    android:layout_marginLeft="10dip"
+                    android:text="@string/button_speek" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="60dip" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

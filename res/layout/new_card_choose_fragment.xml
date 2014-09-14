@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" 
+    android:background="#ff1e1e1e">
+    <LinearLayout android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+        <!-- dalei -->
+        <TextView 
+            android:textColor="#ffb06154"
+		    android:textSize="18sp"
+		    android:paddingLeft="10dip"
+		    android:paddingRight="10dip"
+		    android:paddingTop="4dip"
+		    android:paddingBottom="4dip"
+		    android:clickable="true"
+		    style="?android:attr/listPreferredItemHeight"
+		    android:textStyle="bold"
+            android:id="@+id/title_dalei"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_dalei"/>
+        <View android:layout_height="1dip"
+            android:layout_width="fill_parent"
+            android:background="#ff7a5954"/>
+        <ListView android:id="@+id/dalei"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1.0"
+	        android:scrollbars="none"
+	        android:cacheColorHint="#00000000"
+	        android:dividerHeight="1dip"
+	        android:divider="#00000000"/>
+        
+        <!-- xiaolei -->
+        <TextView 
+            android:textColor="#ffb06154"
+		    android:textSize="18sp"
+		    android:paddingLeft="10dip"
+		    android:paddingRight="10dip"
+		    android:paddingTop="4dip"
+		    android:paddingBottom="4dip"
+		    style="?android:attr/listPreferredItemHeight"
+		    android:textStyle="bold"
+		    android:clickable="true"
+            android:id="@+id/title_xiaolei"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_xiaolei"/>
+        <View android:layout_height="1dip"
+            android:layout_width="fill_parent"
+            android:background="#ff7a5954"/>
+        <ListView android:id="@+id/xiaolei"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1.0"
+	        android:scrollbars="none"
+	        android:cacheColorHint="#00000000"
+	        android:dividerHeight="1dip"
+	        android:divider="#00000000"/>
+        
+        <!-- pinpai -->
+        <TextView 
+            android:textColor="#ffb06154"
+		    android:textSize="18sp"
+		    android:paddingLeft="10dip"
+		    android:paddingRight="10dip"
+		    android:paddingTop="4dip"
+		    android:paddingBottom="4dip"
+		    android:clickable="true"
+		    style="?android:attr/listPreferredItemHeight"
+		    android:textStyle="bold"
+            android:id="@+id/title_pinpai"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_pinpai"/>
+        <View android:layout_height="1dip"
+            android:layout_width="fill_parent"
+            android:background="#ff7a5954"/>
+        <ListView android:id="@+id/pinpai"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1.0"
+	        android:scrollbars="none"
+	        android:cacheColorHint="#00000000"
+	        android:dividerHeight="1dip"
+	        android:divider="#00000000"/>
+        
+        <!-- 型号 -->
+        <TextView 
+            android:textColor="#ffb06154"
+		    android:textSize="18sp"
+		    android:paddingLeft="10dip"
+		    android:paddingRight="10dip"
+		    android:paddingTop="4dip"
+		    android:paddingBottom="4dip"
+		    android:clickable="true"
+		    style="?android:attr/listPreferredItemHeight"
+		    android:textStyle="bold"
+            android:id="@+id/title_xinghao"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_xinghao"/>
+        <View android:layout_height="1dip"
+            android:layout_width="fill_parent"
+            android:background="#ff7a5954"/>
+        <ListView android:id="@+id/xinghao"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1.0"
+	        android:scrollbars="none"
+	        android:cacheColorHint="#00000000"
+	        android:dividerHeight="1dip"
+	        android:divider="#00000000"/>
+    </LinearLayout>
+    
+	<FrameLayout android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:id="@+id/progressbarLayout"
+	    android:visibility="gone"
+	    android:background="#3e2e3543">
+	    <ProgressBar android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:id="@+id/progressbar"
+		    android:indeterminate="false"
+		    android:layout_gravity="center"/>
+	</FrameLayout>
+	
+</FrameLayout>

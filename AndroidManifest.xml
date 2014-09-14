@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bestjoy.app.haierstartservice"
+    android:versionCode="1"
+    android:versionName="V1.0" >
+
+     <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true" />
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="18" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    
+     <!-- add by chenkai 2012-10-20 for privacy module begin -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <!-- add by chenkai 2012-10-20 for privacy module end -->    
+    
+     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"></uses-permission>
+     <!-- 允许用户传入号码直接拔号，不需要通过用户界面确认 -->
+     <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- 联系人相关 begin -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <!-- 联系人相关 end -->
+    <!-- add by chenkai, 允许接收读取短信 begin-->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <!-- add by chenkai, 允许接收读取短信 begin-->
+    
+    <uses-permission android:name="android.permission.READ_LOGS" />
+	<uses-permission android:name="android.permission.WRITE_SETTINGS" />
+	
+	<!-- 保存联系人相关 begin-->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!-- 保存联系人相关 end-->
+    
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    
+
+    <application android:name="com.bestjoy.app.haierstartservice.MyApplication"
+        android:allowBackup="true"
+        android:largeHeap="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+         <activity
+            android:configChanges="orientation|keyboard"
+            android:name="com.bestjoy.app.haierstartservice.ui.JumpActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.bestjoy.app.haierstartservice.ui.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name" />
+        
+        <activity
+            android:name="com.bestjoy.app.haierstartservice.ui.NewCardActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            android:label="@string/button_new_card" />
+        
+        <activity
+            android:name="com.bestjoy.app.haierstartservice.ui.LoginActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:excludeFromRecents="true"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:label="@string/title_login" />
+        
+        <activity
+            android:name="com.bestjoy.app.haierstartservice.ui.MyChooseDevicesActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:label="@string/activity_title_choose_device_general">
+            <intent-filter >
+                <action android:name="com.bestjoy.app.haierwarrantycard.Intent.ACTION_CHOOSE_DEVICE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.bestjoy.app.haierstartservice.ui.RegisterConfirmActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:label="@string/title_new_user_register" />
+        <activity
+            android:name="com.bestjoy.app.haierstartservice.ui.RegisterActivity"
+            android:configChanges="orientation"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:label="@string/title_new_user_register" />
+        
+        <activity
+            android:name="com.bestjoy.app.haierstartservice.ui.CaptureActivity"
+            android:excludeFromRecents="true"
+            android:configChanges="orientation|keyboardHidden"
+            android:clearTaskOnLaunch="true"
+            android:stateNotNeeded="true"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:launchMode="singleTop"/>
+        <activity
+            android:name="com.bestjoy.app.haierstartservice.ui.LoginOrUpdateAccountDialog"
+            android:excludeFromRecents="true"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        
+        <activity
+            android:name="com.bestjoy.app.haierstartservice.ui.BrowserActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:excludeFromRecents="true"
+            android:label="@string/title_feedback" />
+        
+        <activity
+            android:name="com.bestjoy.app.haierstartservice.im.ConversationListActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:label="@string/title_im_conversation" />
+        <activity
+            android:name="com.bestjoy.app.haierstartservice.im.RelationshipActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:label="@string/title_business" />
+        <service android:name="com.bestjoy.app.haierstartservice.service.IMService" />
+        
+        <activity
+            android:name="com.bestjoy.app.haierstartservice.ui.HomeManagerActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:label="@string/menu_manage_home" />
+        
+        <activity
+            android:name="com.bestjoy.app.haierstartservice.ui.NewHomeActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:label="@string/activity_title_new_home" />
+        
+        <activity
+            android:name="com.bestjoy.app.haierstartservice.qrcode.HistoryActivity"
+            android:excludeFromRecents="true"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:label="@string/title_scan_history" />
+        
+         <!-- add by chenkai, 20131201, 增加自动更新 begin -->
+        <receiver android:name="com.bestjoy.app.haierstartservice.update.BootCompletedReceiver">
+            <intent-filter >
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.USER_PRESENT"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="com.bestjoy.app.haierstartservice.update.UpdateService" />
+        <activity
+            android:configChanges="orientation"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:name="com.bestjoy.app.haierstartservice.update.UpdateActivity" />
+        <activity
+            android:configChanges="orientation"
+            android:label="@string/menu_about"
+            android:name="com.bestjoy.app.haierstartservice.update.AppAboutActivity" />
+        
+        <activity
+            android:configChanges="orientation"
+            android:label="@string/menu_setting"
+            android:name="com.bestjoy.app.haierstartservice.ui.SettingsPreferenceActivity" />
+        
+         <activity
+            android:configChanges="orientation"
+            android:label="@string/title_modify_password"
+            android:name="com.bestjoy.app.haierstartservice.ui.ModifyPasswordActivity" />
+         
+        <provider android:name="com.bestjoy.app.haierstartservice.database.BjnoteProvider"
+            android:exported="true"
+            android:authorities="com.bestjoy.app.haierstartservice.provider.BjnoteProvider"/>
+        
+        <provider android:name="com.bestjoy.app.haierstartservice.database.DeviceProvider"
+            android:exported="true"
+            android:authorities="com.bestjoy.app.haierstartservice.provider.DeviceProvider"/>
+        
+        <!-- android:process=":photoservice" -->
+        <service android:name="com.bestjoy.app.haierstartservice.service.PhotoManagerService" >
+            <intent-filter >
+                <action android:name="com.bestjoy.app.haierstartservice.service.intent.initphotoservice" />
+            </intent-filter>
+        </service>
+        <service android:name="com.bestjoy.app.haierstartservice.service.EmptyService" >
+            <intent-filter >
+                <action android:name="com.bestjoy.app.haierstartservice.service.intent.emptyservice" />
+            </intent-filter>
+        </service>
+        
+        <!-- add by chenkai, 20140810, Youmeng广播历史 begin -->
+        <activity
+            android:name="com.bestjoy.app.haierstartservice.ui.YMessageListActivity"
+            android:excludeFromRecents="true"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:parentActivityName="com.bestjoy.app.haierstartservice.ui.MainActivity"
+            android:label="@string/menu_ymessage" />
+        <!-- add by chenkai, 20140810, Youmeng广播历史 end -->
+        <!-- 消息推送代码开始 -->
+         <receiver
+             android:name="com.umeng.message.NotificationProxyBroadcastReceiver"
+             android:exported="false" >
+         </receiver>
+         <receiver android:name="com.umeng.message.RegistrationReceiver" >
+             <intent-filter>
+                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+             </intent-filter>
+             <intent-filter>
+                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                 <data android:scheme="package" />
+             </intent-filter>
+         </receiver>
+         <receiver android:name="com.umeng.message.UmengBroadcastReceiver" >
+             <intent-filter>
+                 <action android:name="org.agoo.android.intent.action.RECEIVE" />
+             </intent-filter>
+             <intent-filter>
+                 <action android:name="com.bestjoy.app.haierstartservice.intent.action.COMMAND" />
+             </intent-filter>
+             <intent-filter>
+                 <action android:name="org.agoo.android.intent.action.RE_ELECTION_V2" />
+             </intent-filter>
+         </receiver>
+
+         <service
+             android:name="com.umeng.message.UmengService"
+             android:exported="true"
+             android:process=":umengService_v1" >
+             <intent-filter>
+                 <action android:name="com.bestjoy.app.haierstartservice.intent.action.START" />
+             </intent-filter>
+             <intent-filter>
+                 <action android:name="com.bestjoy.app.haierstartservice.intent.action.COCKROACH" />
+             </intent-filter>
+             <intent-filter>
+                 <action android:name="org.agoo.android.intent.action.PING" />
+             </intent-filter>
+         </service>
+         <service
+             android:name="org.android.agoo.service.ElectionService"
+             android:exported="true"
+             android:process=":umengService_v1" >
+             <intent-filter>
+                 <action android:name="org.agoo.android.intent.action.ELECTION_V2" />
+             </intent-filter>
+         </service>
+         <service android:name="com.umeng.message.UmengIntentService" />
+         <!-- V1.3.0添加的service，负责下载通知的资源 -->
+         <service android:name="com.umeng.message.UmengDownloadResourceService" />
+         
+            <!-- wangkun "53d10bdc56240bbd060b0728" -->
+		<meta-data
+            android:name="UMENG_APPKEY"
+            android:value="53d10bdc56240bbd060b0728" >
+        </meta-data>
+            <!-- wangkun "3ce4df1ea16bbdc4be4030fa709ff839" -->
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="3ce4df1ea16bbdc4be4030fa709ff839" >
+        </meta-data>
+		<!-- 消息推送代码结束 -->
+		<meta-data android:value="Haier" android:name="UMENG_CHANNEL"/>
+    </application>
+
+</manifest>

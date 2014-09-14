@@ -1,0 +1,6 @@
+bin/
+.settings/
+gen/
+.DS_Store
+project.properties
+

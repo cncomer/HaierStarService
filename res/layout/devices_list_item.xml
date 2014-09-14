@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:paddingLeft="@dimen/title_my_product_left_margin"
+    android:paddingRight="@dimen/title_my_product_right_margin"
+    android:paddingTop="5dip"
+    android:paddingBottom="5dip"
+    android:layout_height="wrap_content" >
+
+    <ImageView android:id="@+id/avator"
+        android:layout_width="@dimen/product_preview_avator_width"
+        android:layout_height="@dimen/product_preview_avator_height"
+        android:scaleType="fitCenter"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/device_tv"/>
+
+    <LinearLayout android:id="@+id/product"
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@+id/avator"
+        android:layout_toLeftOf="@+id/deadline"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dip"
+        android:layout_height="wrap_content">
+        <TextView android:id="@+id/name"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" 
+	        android:text="@string/product_debug_placeholder"
+	        android:textSize="16sp"
+	        android:textColor="#ffd88aa2" />
+        <TextView android:id="@+id/brand"
+	        android:layout_width="fill_parent"
+	        android:layout_marginTop="2dip"
+	        android:layout_height="wrap_content" 
+	        android:text="@string/product_debug_placeholder"
+	        android:textColor="@color/light_black" />
+        <TextView android:id="@+id/model"
+	        android:layout_width="fill_parent"
+	         android:layout_marginTop="2dip"
+	        android:layout_height="wrap_content" 
+	        android:text="@string/product_debug_placeholder"
+	        android:textColor="@color/light_black" />
+    </LinearLayout>
+    
+    <LinearLayout android:id="@+id/deadline"
+        android:layout_width="wrap_content"
+        android:layout_toLeftOf="@+id/model_flag"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginLeft="20dip"
+        android:layout_height="wrap_content">
+        <TextView android:id="@+id/day"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" 
+	        android:text="@string/product_deadline_placeholder"
+	        android:textSize="14sp"
+	        android:textColor="#ff000000" />
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" 
+	        android:text="@string/title_over_deadline"
+	        android:textColor="#ff000000" />
+    </LinearLayout>
+
+    <ImageView 
+        android:id="@+id/model_flag"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dip"
+        android:layout_height="wrap_content"
+        android:src="@drawable/flag_arrow_r" />
+
+</RelativeLayout>

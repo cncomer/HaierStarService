@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginBottom="2dip"
+	    android:gravity="center_vertical"
+	    android:orientation="horizontal" >
+	    <TextView style="@style/ProductInfo.Repair"
+	        android:text="@string/product_brand"/>
+	    <TextView android:id="@+id/product_brand"
+	        android:hint="@string/product_debug_placeholder"
+	        style="@style/ProductInfoInput.Repair"/>
+	</LinearLayout>
+	
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    android:layout_marginBottom="2dip"
+	    android:orientation="horizontal" >
+	    <TextView style="@style/ProductInfo.Repair"
+	        android:text="@string/product_model"/>
+	    <TextView android:id="@+id/product_model"
+	        android:hint="@string/product_debug_placeholder"
+	        style="@style/ProductInfoInput.Repair"/>
+	</LinearLayout>
+
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    android:layout_marginBottom="2dip"
+	    android:orientation="horizontal" >
+	    <TextView style="@style/ProductInfo.Repair"
+	        android:text="@string/product_time"/>
+	    <TextView android:id="@+id/product_time"
+	        android:hint="@string/product_debug_placeholder"
+	        style="@style/ProductInfoInput.Repair"/>
+	</LinearLayout>
+	
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    android:layout_marginBottom="2dip"
+	    android:orientation="horizontal" >
+	    <TextView style="@style/ProductInfo.Repair"
+	        android:text="@string/product_buy_date"/>
+	    <TextView android:id="@+id/product_buy_date"
+	        android:hint="@string/product_debug_placeholder"
+	        style="@style/ProductInfoInput.Repair"/>
+	</LinearLayout>
+	
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    android:layout_marginBottom="2dip"
+	    android:orientation="horizontal" >
+	    <TextView style="@style/ProductInfo.Repair"
+	        android:text="@string/product_where"/>
+	    <TextView android:id="@+id/product_where"
+	        android:hint="@string/product_debug_placeholder"
+	        style="@style/ProductInfoInput.Repair"/>
+	</LinearLayout>
+	
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    android:layout_marginBottom="2dip"
+	    android:orientation="horizontal" >
+	    <TextView style="@style/ProductInfo.Repair"
+	        android:text="@string/product_deadline"/>
+	    <TextView android:id="@+id/product_deadline"
+	        android:hint="@string/product_debug_placeholder"
+	        style="@style/ProductInfoInput.Repair"/>
+	</LinearLayout>
+</LinearLayout>

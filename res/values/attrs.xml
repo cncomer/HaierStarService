@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AddressCompleteEditText"> 
+        <attr name="popView" format="reference"/> 
+        <attr name="completionThreshold" format="reference|integer"/>
+        
+    </declare-styleable> 
+</resources>

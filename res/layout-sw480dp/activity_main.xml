@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/adsViewPager"
+        android:layout_width="fill_parent"
+        android:layout_height="279dp"/>
+    
+    <View android:id="@+id/placeholder"
+        android:layout_width="fill_parent"
+        android:layout_height="10dip"/>
+    <LinearLayout
+        android:id="@+id/dots"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" />
+    
+    <View android:id="@+id/line"
+        android:layout_marginTop="8dip"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_below="@+id/dots"
+        android:background="#6e9f9f9f"/>
+
+    <ListView android:id="@+id/listview"
+        android:cacheColorHint="#00000000"
+        android:layout_below="@+id/line"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1.0"
+        android:scrollbars="none"
+        android:layout_marginBottom="4dip" />
+
+</LinearLayout>

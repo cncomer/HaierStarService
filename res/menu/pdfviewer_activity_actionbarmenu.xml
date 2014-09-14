@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+string/menu_exit"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="@string/menu_exit"/>
+    <item
+        android:id="@+string/menu_goto"
+        android:orderInCategory="101"
+        android:showAsAction="always"
+        android:title="@string/menu_goto"/>
+    <item
+        android:id="@+string/menu_fullscreen"
+        android:orderInCategory="102"
+        android:showAsAction="always"
+        android:checkable="true"
+        android:title="@string/menu_fullscreen"/>
+
+</menu>

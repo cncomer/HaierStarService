@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    android:orientation="horizontal" >
+        <ImageView style="@style/ProductStarIcon"
+            android:src="@drawable/ic_red_star" />
+	    <TextView style="@style/ProductInfo"
+	        android:text="@string/product_type"/>
+	    <EditText android:id="@+id/product_type_input"
+	        style="@style/ProductInfoInput"/>
+	    <Button android:id="@+id/menu_choose"
+	        android:layout_width="wrap_content"
+	        android:text="@string/menu_choose"
+	        style="@style/DefaultShapeButton"
+	        android:paddingLeft="8dip"
+	        android:paddingRight="8dip"
+	        android:textSize="12sp"
+	        android:layout_height="30dip"/>
+	</LinearLayout>
+	
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    android:orientation="horizontal" >
+        <ImageView style="@style/ProductStarIcon"
+            android:src="@drawable/ic_red_star" />
+	    <TextView style="@style/ProductInfo"
+	        android:text="@string/product_brand"/>
+	    <EditText android:id="@+id/product_brand_input"
+	        style="@style/ProductInfoInput"/>
+	</LinearLayout>
+	
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    android:orientation="horizontal" >
+        <ImageView style="@style/ProductStarIcon"
+            android:src="@drawable/ic_red_star" />
+	    <TextView style="@style/ProductInfo"
+	        android:text="@string/product_model"/>
+	    <EditText android:id="@+id/product_model_input"
+	        style="@style/ProductInfoInput"/>
+	</LinearLayout>
+
+    
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    android:orientation="horizontal" >
+        <ImageView style="@style/ProductStarIcon"
+            android:layout_width="4dip" />
+	    <TextView style="@style/ProductInfo"
+	        android:text="@string/product_sn"/>
+	    <EditText android:id="@+id/product_sn_input"
+	        style="@style/ProductInfoInput"/>
+	</LinearLayout>
+	
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    android:orientation="horizontal" >
+        <ImageView style="@style/ProductStarIcon"
+            android:src="@drawable/ic_red_star" />
+	    <TextView style="@style/ProductInfo"
+	        android:text="@string/product_tel"/>
+	    <EditText android:id="@+id/product_tel_input"
+	        android:autoLink="all"
+	        android:inputType="number"
+	        style="@style/ProductInfoInput"/>
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    android:orientation="horizontal" >
+        <ImageView style="@style/ProductStarIcon"
+            android:layout_width="4dip" />
+	    <TextView style="@style/ProductInfo"
+	        android:text="@string/product_baoxiu_date"/>
+	    <EditText android:id="@+id/product_wy_input"
+	        android:layout_width="50dip"
+	        android:layout_height="wrap_content"
+	        android:inputType="number"
+	        android:background="@drawable/edit_text_holo_light"/>
+	    <TextView style="@style/ProductInfo"
+	        android:singleLine="true"
+	        android:textColor="#ff696365"
+	    	android:textSize="10sp"
+	        android:layout_width="wrap_content"
+	        android:text="@string/product_baoxiu_date_tips"/>
+	</LinearLayout>
+    
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    android:orientation="horizontal" >
+        <ImageView style="@style/ProductStarIcon"
+            android:layout_width="4dip" />
+	    <TextView style="@style/ProductInfo"
+	        android:text="@string/product_beizhu"/>
+	    <EditText android:id="@+id/product_beizhu_tag"
+	        style="@style/ProductInfoInput"/>
+	</LinearLayout>
+</LinearLayout>

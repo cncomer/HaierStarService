@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" 
+    android:background="#ff1e1e1e">
+    <ExpandableListView android:id="@+id/listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none"
+        android:cacheColorHint="#00000000"
+        android:dividerHeight="1dip"
+        android:divider="#ff7a5954"
+        android:childDivider="#00000000"/>
+	<FrameLayout android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:id="@+id/progressbarLayout"
+	    android:background="#3e2e3543">
+	    <ProgressBar android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:id="@+id/progressbar"
+		    android:indeterminate="false"
+		    android:layout_gravity="center"/>
+	</FrameLayout>
+	
+</FrameLayout>

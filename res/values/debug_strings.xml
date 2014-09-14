@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+       <string-array name="debug_products">
+           <item>客厅电视机</item>
+           <item>卧室电视机</item>
+           <item>冰箱</item>
+           <item>电热水器</item>
+           <item>主卧空调</item>
+       </string-array>
+       
+       <string-array name="debug_products_type">
+           <item>电视机</item>
+           <item>电视机</item>
+           <item>冰箱</item>
+           <item>电热水器</item>
+           <item>空调</item>
+       </string-array>
+       
+       <string-array name="debug_products_brand">
+           <item>客厅电视机</item>
+           <item>卧室电视机</item>
+           <item>冰箱</item>
+           <item>电热水器</item>
+           <item>主卧空调</item>
+       </string-array>
+       
+         <string-array name="debug_products_model">
+           <item>KLV-46R470A</item>
+           <item>KLV-46R470A</item>
+           <item>BCD-649WADV</item>
+           <item>ES60H-Z4(Z2)</item>
+           <item>挂式空调</item>
+       </string-array>
+
+       <string-array name="debug_products_deadline">
+           <item>238</item>
+           <item>0</item>
+           <item>127</item>
+           <item>0</item>
+           <item>11</item>
+       </string-array>
+       
+       <integer-array name="debug_products_avator">
+           <item>@drawable/device_tv</item>
+           <item>@drawable/device_tv</item>
+           <item>@drawable/device_bingxiang</item>
+           <item>@drawable/device_reshuiqi</item>
+           <item>@drawable/device_kongtiao</item>
+       </integer-array>
+       
+       <string-array name="debug_homes">
+           <item>上海的家</item>
+           <item>昆明的家</item>
+           <item>公司</item>
+       </string-array>
+       
+</resources>

@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">星服务</string>
+    <string name="app_name_2014">星服务 2014</string>
+    <string name="app_id">5350f3d3</string>
+    <string name="button_register">新用户注册</string>
+     <string name="button_find_password">找回密码</string>
+    <string name="button_new_card">新建保修卡</string>
+    <string name="button_edit_card">编辑保修卡</string>
+    <string name="button_my_card">我的保修卡</string>
+     <string name="button_webview_goback">回退</string>
+    <string name="button_login">"登录"</string>
+     <string name="menu_back">"返回"</string>
+     <string name="button_close">关闭</string>
+      <string name="button_save">保存</string>
+      <string name="button_next">下一步</string>
+       <string name="button_confirm">新建保修卡</string>
+    
+    <string name="msg_unsupport_operation">"该功能暂不支持"</string>
+     <string name="msg_no_sdcard">"未检测到SD卡,无法使用相机"</string>
+     <string name="dialog_msg_media_unmounted">无法访问外置存储卡,请检查....</string>
+      
+      <string name="text_sms">发短信</string>
+     <string name="text_call">打电话</string>
+     
+      <string name="menu_picture_gallery">上传手机中的照片</string>
+        <string name="menu_picture_camera">拍照上传</string>
+        <string name="menu_bill_edit">拍摄发票</string>
+       <string name="menu_bill_show">查看发票</string>
+       <string name="menu_goods_preview">预览</string>
+       <string name="menu_goods_capture">拍摄</string>
+       
+       
+       <string name="title_scan_desc1">扫描海尔产品二维码</string>
+       <string name="title_scan_desc2">获取产品信息</string>
+       <string name="title_scan_button">开始扫描</string>
+       
+       <string name="title_my_product">我的家电</string>
+       <string name="product_type">类型</string>
+       <string name="product_brand">品牌</string>
+       <string name="product_model">型号</string>
+       <string name="product_sn">商品编号</string>
+       <string name="product_baoxiu_date">保修期(年)</string>
+       <string name="product_beizhu">备注标签</string>
+       <string name="product_time">保修期</string>
+       <string name="product_tel">保修电话</string>
+       <string name="product_where">购买地点</string>
+       <string name="product_bill">发票</string>
+       <string name="product_buy_date">购买日期</string>
+       <string name="product_buy_cost">购买价格</string>
+       <string name="product_buy_entry">购买途径</string>
+       <string name="product_buy_delay_time">延保时间</string>
+       <string name="product_buy_delay_componey">延保单位</string>
+       <string name="product_buy_delay_componey_tel">延保电话</string>
+       <string name="product_baoxiu_date_tips">(请核实产品资料标注的保修期)</string>
+       
+       <string name="product_debug_placeholder">XXXXXXXX</string>
+       <string name="product_bill_desc">请拍摄发票或收据，作为保修凭据</string>
+    	<string name="title_more_message">更多信息</string>
+    	<string name="button_qa">常见问题</string>
+    	<string name="button_call_repair">拨打维修电话</string>
+    	<string name="button_ask_online">在线咨询</string>
+    	<string name="button_speek">点击说话</string>
+       <string name="account_name">账号:</string>
+       <string name="account_pwd">密码:</string>
+       <string name="usr_name">用户名</string>
+       <string name="usr_pwd">密码</string>
+       <string name="usr_repwd">确认密码</string>
+       <string name="usr_tel">手机号码</string>
+       <string name="usr_validate">验证码</string>
+       <string name="usr_name_hint">输入你的用户名</string>
+       <string name="usr_pwd_hint">输入你的密码</string>
+       <string name="usr_repwd_hint">请再次输入你的密码</string>
+       <string name="usr_tel_hint">输入你的手机号</string>
+    
+    <string name="activity_title_choose_device_general">我的保修卡</string>
+    <string name="activity_title_repair">预约维修</string>
+    <string name="activity_title_install">预约安装</string>
+    
+    <string name="title_over_deadline">过保</string>
+    <string name="title_login">星登录</string>
+    <string name="title_new_user_register">新用户注册</string>
+    <string name="product_deadline_placeholder">999天</string>
+    
+    <string name="menu_more">更多</string>
+    <string name="menu_login">登录</string>
+    <string name="menu_exit">退出</string>
+    <string name="menu_refresh">刷新</string>
+    <string name="menu_register">注册</string>
+    <string name="menu_setting">设置</string>
+    <string name="menu_help">帮助</string>
+    <string name="menu_about">关于</string>
+    <string name="menu_search">搜索</string>
+    <string name="menu_done">完成</string>
+    <string name="menu_choose">选择</string>
+    
+    <string name="menu_edit">编辑</string>
+    <string name="menu_edit_for_delete">删除</string>
+    <string name="menu_delete">删除</string>
+	<string name="menu_create">新建</string>
+	<string name="menu_save">保存</string>
+
+    <string name="register_tips">小提示:输入手机号码，点击“获取验证码”后，系统会自动下发一条包含验证码的短信，手机在收到该短信后会将验证码提取出来并回填到验证码文本框</string>
+    <string name="title_get_usr_validate">获取验证码</string>
+    <string name="address">地址</string>
+    <string name="province">省</string>
+    <string name="city">市</string>
+    <string name="district">区</string>
+    <string name="name">姓名</string>
+    <string name="button_register_confirm">确认注册</string>
+    <string name="input_province_tips">请先选择省份</string>
+    <string name="input_city_tips">请先选择城市</string>
+    <string name="choose_address">选择地址</string>
+    <string name="input_home_place_detail_tips">为方便为您提供便捷的安装维修服务，请您填写详细地址。</string>
+    
+    <string name="msg_progressdialog_wait">操作处理中，请稍后....</string>
+    <string name="msg_input_usrtel_password">请输入你的手机号和密码</string>
+    
+    <string name="my_home">我的家</string>
+    <string name="parent_home">父母家</string>
+    <string name="parent_home2">岳父母家</string>
+    <string name="address_pcs">省/市</string>
+    <string name="button_confirm_ok">确认</string>
+    <string name="people_info">联系人信息</string>
+    <string name="yuyue_time">预约时间</string>
+    <string name="date">日期</string>
+    <string name="time">时间</string>
+    <string name="error_des">故障描述</string>
+    <string name="button_yuyue_repair">预约</string>
+    
+    
+    <string name="start_speak">开始说话</string>
+    <string name="end_speak">结束说话</string>
+    <string name="speak_tips">当前正在说话，音量大小：</string>
+    <string name="login_fail">登录失败</string>
+    
+    
+    <!-- qrcode scan part begin -->
+    <string name="msg_default_status">请将二维码等放置于红框内扫描，注意手勿抖动，勿倾斜</string>
+  <string name="msg_default_status_on">关灯</string>
+  <string name="msg_default_status_off">开灯</string>
+  <string name="msg_default_type">类型</string>
+  <string name="msg_existing_barcode">不存在barcode图片，操作取消</string>
+  <string name="msg_encode_barcode_failed">找不到条码。</string>
+  <string name="msg_encode_contents_failed">不能从已有数据中读取条码。</string>
+   <string name="msg_default_contents">内容</string>
+  <string name="msg_default_format">格式</string>
+  <string name="menu_history">历史</string> 
+  <string name="menu_input">输入名片码</string>
+  <string name="button_google_shopper">谷歌购物</string>
+  <string name="msg_share_explanation">你可以在你的手机屏幕上显示条码，并使用其他手机扫描此条码方式进行分享</string>
+  <string name="msg_share_subject_line">这是我所扫描条码的内容</string>
+   <string name="button_ignore">返回扫描</string>
+  <string name="button_share_by_sms">通过短信分享</string>
+  <string name="button_share_clipboard">分享剪切板</string>
+   <string name="button_share_by_email">通过email分享</string>
+    <string name="result_text">找到纯文本</string>
+    <string name="result_haier_barcode">找到海尔识别码</string>
+    <string name="result_baoxiucard_barcode">找到保修卡</string>
+    <string name="msg_default_mms_subject">Hi</string>
+  <string name="msg_encode_in_progress">正在生成条码\u2026</string>
+  <string name="msg_google_shopper_missing">谷歌购物未安装</string>
+  <string name="msg_install_google_shopper">谷歌购物结合条码扫描价格，评论和不打开浏览器。您想尝试吗？</string>
+  <string name="msg_intent_failed">抱歉，无法打开所需软件。 条码内容可能无效。</string>
+  <string name="msg_local_intent_failed">抱歉，文件无法打开</string>
+  <string name="button_ok">确定</string>
+  <string name="button_cancel">取消</string>
+  <string name="msg_not_our_results">你离开此应用程序。搜索结果，您会看到的都没有涉及这个应用程序</string>
+  <string name="history_clear_one_history_text">删除</string>
+  <string name="history_clear_text">删除历史</string>
+  <string name="history_email_title">条码扫描器历史</string>
+  <string name="history_empty">空的</string>
+  <string name="history_empty_detail">没有条码扫描已记录</string>
+  <string name="history_send">发送历史</string>
+  <string name="history_title">历史</string>
+   <string name="msg_sure">你肯定吗？</string>
+   <string name="msg_save_ok">保存成功</string>
+   <string name="msg_sd_unavailable">SD无法访问...</string>
+    <string name="msg_camera_framework_bug">出错咯，机器人相机出现问题。您可能需要重新启动设备。</string>
+  <!-- qrcode scan part end -->
+  
+  
+  <string name="msg_login_confirm_success">登录成功，现在可以开始使用本软件了</string>
+  <string name="msg_login_save_success">账户初始化失败，请再次尝试...</string>
+  <string name="msg_login_dialog_title_wait">正在登录...</string>
+   <string name="msg_update_dialog_title_wait">正在更新...</string>
+  <string name="msg_login_download_accountinfo_wait">正在载入账户信息....</string>
+  <string name="msg_login_download_addressinfo_wait">正在载入家信息....</string>
+  <string name="msg_login_download_baoxiuinfo_wait">正在载入保修卡信息....</string>
+  <string name="msg_op_canceled">操作取消</string>
+  <string name="msg_op_successed">操作成功</string>
+   <string name="msg_op_failed">操作失败</string>
+    
+  <string name="button_re_vali">重新验证</string>
+  <string name="second">倒计时%1$s秒</string>
+    <string name="msg_input_usrtel">请输入你的手机号码</string>
+    <string name="msg_input_usrtel_invalid">请输入有效的11位手机号码</string>
+    <string name="msg_input_yanzheng_code">请输入验证码</string>
+    <string name="msg_input_yanzheng_code_check_net">获取验证码失败，请检查你的网络连接</string>
+    <string name="msg_yanzheng_code_msg_send">验证码短信已下发，请稍后</string>
+    <string name="msg_yanzheng_code_msg_has_registered">该手机号码已经注册，可以直接登录或是找回密码.</string>
+    <string name="msg_input_yanzheng_code_error">验证码输入有误，请重新输入</string>
+    <string name="msg_input_usr_name">请输入姓名</string>
+    <string name="msg_input_usr_pro">请输入省份</string>
+    <string name="msg_input_usr_city">请输入城市</string>
+    <string name="msg_input_usr_dis">请输入地区</string>
+    <string name="msg_input_usr_place_detail">请输入你的详细地址</string>
+    <string name="msg_input_usr_pwd">请输入密码</string>
+    <string name="msg_input_pwd_not_match_tips">两次密码输入不一致，请重新输入</string>
+    <string name="msg_usr_pwd_too_short_tips">密码不能小于6位</string>
+    
+    <string name="title_feedback">评价</string>
+    
+    <string name="baoxiucard_validity">%s天</string>
+    <string name="baoxiucard_validity_toomuch">"9999天"</string>
+    <string name="baoxiucard_outdate">过保</string>
+    <string name="menu_new_card">新建保修卡</string>
+     <string name="button_rescan">重新扫描</string>
+     <string name="button_scan_exit">退出扫描</string>
+     <string name="button_scan_finish_return_result">下一步</string>
+     <string name="msg_scan_finish_return_result_no_network">在返回之前会向服务器查询产品信息，请检查网络是否可用</string>
+    <string name="menu_new_repair">预约维修</string>
+    <string name="menu_new_install">预约安装</string>
+     <string name="menu_manage_home">管理家</string>
+     <string name="activity_title_new_home">新建家</string>
+     <string name="activity_title_update_home">更新家</string>
+     
+     <string name="title_scan_history">扫描历史</string>
+     <string name="msg_can_not_access_network">抱歉，暂时无法访问服务器，请检查网络，稍后重试</string>
+     <string name="msg_download_xinghao_wait">正在下载型号数据，请稍等...</string>
+     <string name="msg_download_xinghao_error">下载型号数据失败,请稍后重试...</string>
+     <string name="msg_download_xinghao_oom_error">型号数据太大,不能正常解析,请稍后重试...</string>
+     <string name="msg_download_no_xinghao_wait">服务器还暂时没有该品牌的产品</string>
+     <string name="title_dalei">大类</string>
+     <string name="title_xiaolei">小类</string>
+     <string name="title_pinpai">品牌</string>
+     <string name="title_xinghao">型号</string>
+     <string name="title_choose_type_divider">--</string>
+     <string name="hint_optional">选填</string>
+     <string name="hint_must">必填</string>
+     <string name="input_type_please_input">请输入</string>
+     <string name="save_success">保存成功</string>
+     <string name="update_success">更新成功</string>
+     <string name="save_fail">保存失败</string>
+     <string name="login_tip">请先登录</string>
+     <string name="msg_yuyue_sucess">预约成功</string>
+     <string name="msg_yuyue_fail">预约失败</string>
+     <string name="default_home_name">我的家</string>
+     <string name="type_repair">维修</string>
+     <string name="type_install">安装</string>
+     <string name="msg_input_tel_when_find_password">请先输入要找回密码的手机号码</string>
+     <string name="msg_find_password_success">密码已成功找回，请查看短信</string>
+      <string name="msg_local_save_card_failed">服务器上传信息成功，但本地保存失败，请重新登录同步数据</string>
+      <string name="msg_local_save_card_failed_due_to_parse_exception">服务器上传信息成功，但解析返回的保修卡数据失败</string>
+      <string name="msg_get_no_content_from_server">抱歉，服务器没有返回数据，请重试，如果多次提示该错误，请反馈給开发者，非常感谢.</string>
+      <string name="title_baoxiucard_info">保修卡信息</string>
+      <string name="msg_cant_show_bill">"请先拍摄发票"</string>
+      
+      <!-- 自动更新 begin -->
+      <string name="app_updating">正在更新，请稍候...</string>
+	<string name="app_update_title">发现新版本</string>
+	<string name="app_update_tip">某些更新必须安装，这取决于更新等级，请阅读更新内容:\n</string>
+	<string name="button_update_ok">更新</string>
+	<string name="button_update_no">不更新</string>
+	<string name="button_update_finish">下载完成，是否开始安装</string>
+	<string name="button_exit">退出</string>
+	<string name="button_exit_confirm">确定退出系统吗？</string>
+	<string name="app_update_error">更新过程中发生了错误，最可能是网络问题，请检查后重试</string>
+	<string name="app_update_cancel">更新操作被取消了</string>
+	<string name="app_update_warn">下载过程中，请稍等...</string>
+	<string name="app_update_not_install">上次下载的更新还未完成安装，建议安装，如果放弃，将不再进行本次更新提示，除非有更新的版本</string>
+	<string name="app_update_not_install_once">上次下载的更新还未完成安装，并且该更新必须安装，否则程序将退出。</string>
+       <string name="app_flash_label">载入中...</string>
+      <string name="button_update">更新</string>
+         <string name="button_home">"官网"</string>
+          <string name="button_introduce">"功能介绍"</string>
+         <string name="msg_app_has_latest">"已是最新版本"</string>
+         <string name="app_about_title">"关于海尔电子保修卡"</string>
+         <string name="format_latest_version">"可用更新%s"</string>
+         <string name="format_current_sw_version">"版本 %s"</string>
+         <string name="format_current_db_version">"型号库版本 %s"</string>
+         <string name="msg_current_device_token">"设备Token(单击复制)"</string>
+         <string name="format_current_device_token_copy">"设备Token(%s)已经复制到剪贴板，请在文本框中粘贴"</string>
+         <string name="msg_current_device_token_null">"设备Token(未注册)"</string>
+         <string name="msg_app_releasenote">"更新说明:"</string>
+          <string name="msg_app_release_time">"更新时间:%s"</string>
+           <string name="msg_app_release_size">"软件大小:%s"</string>
+         <string name="button_install">安装</string>
+         <string name="status_downloading">正在下载(%d%%)....</string>
+          <string name="dialog_msg_download_unfinish_on_exit">下载未完成，是否取消并退出?</string>
+          <string name="dialog_msg_download_unfinish">下载未完成，是否取消?</string>
+         <!-- 自动更新 end -->
+         
+         <string name="pinpai_haier">海尔</string>
+         <string name="pinpai_kasadi">卡萨帝</string>
+         <string name="pinpai_tongshuai">统帅</string>
+         <string name="msg_pinpai_haier_suppot_only">暂未开放</string>
+         <string name="msg_need_home_operation">请先新建一个家</string>
+         <string name="msg_need_login_operation">请先登录</string>
+         <string name="msg_no_bxphone">对不起，该保修卡没有设置售后服务电话</string>
+         <string name="must_haier_confirm_yuyue">目前只有海尔产品才接受电子预约服务，是否直接拨打厂家电话？</string>
+         <string name="none_select_tips">没有选择任何条目</string>
+          <string name="msg_local_save_op_failed">服务器上传信息成功，但本地保存失败</string>
+         <string name="yuyue_time_too_early_tips">预约时间必须大于当前时间后3个小时</string>
+         <string name="sure_delete">确定删除吗？</string>
+         <string name="button_onekey_install">一键安装</string>
+         <string name="button_onekey_repair">一键报修</string>
+         
+         <string name="msg_login_failed_general">登录失败，检查网络是否可用</string>
+          <string name="msg_delete_home_confirm">该操作将同时删除选择的家在服务器和本地的数据，将不可恢复，是否确定要这么做?</string>
+           <string name="msg_delete_account_confirm">该操作将删除本地账户数据，包括全部的家信息和保修卡信息，是否确定要这么做?</string>
+		   <string name="msg_existing_system_confirm">您是要退出吗？正常操作无需退出。退出后再次进入需要重新登录，下载数据有点慢哦。</string>
+         
+         <string name="button_policy">保修政策</string>
+         <string name="button_guide">使用说明书</string>
+         
+         <string name="select_clock_tips">只能选择整点时钟</string>
+         <string name="select_time_out_of_service_tips">只能选择8:00-19:00之间的时间</string>
+
+         <string name="usage_tips">小提示</string>
+         <string name="button_iknown">知道了</string>
+         <string name="baoxiu_policy_notice">因为各品牌的保修政策有差异，具体保修时间请以厂家约定的为准。本软件计算仅供参考</string>
+         <string name="baoxiu_choose_tip">"提供了侧滑菜单来帮助你快速选择需要的产品，你可以通过点击选择按钮，或是从屏幕右边缘向左滑动手指。"</string>
+         
+         <string name="preference_key_account_title">账户设置</string>
+         <string name="preference_key_account_name_title">修改用户名</string>
+         <string name="preference_key_account_password_title">修改账户密码</string>
+         <string name="hint_input_old_password">请输入你的当前密码</string>
+         <string name="hint_input_new_password">请输入你的新密码</string>
+         <string name="hint_reinput_new_password">请再次输入你的新密码</string>
+         
+         <string name="msg_input_old_password_error">输入的当前密码有误，请重新输入...</string>
+         <string name="msg_input_new_password_error">你输入的新密码不一致，请确认重新输入</string>
+         <string name="select_date_out_of_service_tips">预约安装时间必须大于今天</string>
+         <string name="select_repair_date_out_of_service_tips">预约维修时间必须大于今天</string>
+         <string name="product_detail_repair_tips">因为各品牌的保修政策有差异，具体保修时间请以厂家约定的为准。本软件计算仅供参考。</string>
+
+          <string name="title_modify_password">修改密码</string>
+         <string name="buy_place_1">国美</string>
+         <string name="buy_place_2">苏宁</string>
+         <string name="buy_place_3">永乐</string>
+         <string name="buy_place_4">精品店</string>
+         <string name="buy_place_5">五星</string>
+         <string name="buy_place_6">专卖店</string>
+         <string name="buy_place_7">互联网</string>
+         <string name="buy_place_8">电子邮件或短信</string>
+         <string name="buy_place_9">400热线</string>
+         <string name="buy_place_10">其他渠道</string>
+         
+         <string name="msg_gernal_network_error">"请检查您的网络是否通畅"</string>
+         <string name="msg_get_yanzhengma_overtime">"本日获取短信验证码超过限制"</string>
+          <string name="msg_get_no_yanzhengma">"服务器没有返回验证码"</string>
+         <string name="msg_get_yanzhengma_gernal_error">"暂时无法获取短信验证码"</string>
+         
+         
+         <!-- add by chenkai for Usage, 2014.05.31 begin-->
+        <string name="msg_no_product_usage">"没有提供产品使用说明"</string>
+        <string name="app_label_mingdown_pdf">PDF阅读器</string>
+        <string name="msg_product_usage_downloading_tip">"正在下载使用说明书，请稍等&#8230;"</string>
+        <string name="msg_product_usage_downloading_format">"正在下载使用说明书，请稍等&#8230;\n已下载%1$d%%,共%2$s"</string>
+        <string name="msg_product_usage_downloading_ok">"下载成功"</string>
+        <string name="msg_product_usage_downloading_failed">"下载失败"</string>
+        <!-- add by chenkai for Usage, 2014.05.31 end-->
+        <!-- add by chenkai, 增加一键保养, 2014.05.31 begin -->
+        <string name="activity_title_maintenance">预约保养</string>
+        <string name="button_onekey_maintenance">一键保养</string>
+        <string name="maintennace_desc">保养描述</string>
+        <!-- add by chenkai, 增加一键保养, 2014.05.31 end -->
+        
+        <!-- add by chenkai, 程序接收验证码短信并回填验证码, 2014.06.01 begin -->
+        <string name="hint_wait_yanzhengma_sms">等待验证码.....</string>
+        <string name="haier_yanzhengma_verify1">海尔</string>
+        <string name="haier_yanzhengma_verify2">注册电子保修卡</string>
+        <!-- add by chenkai, 程序接收验证码短信并回填验证码, 2014.06.01 end -->
+         
+         <string name="year">年</string>
+         <string name="one_year">1</string>
+         <string name="two_year">2</string>
+         <string name="three_year">3</string>
+          <string name="msg_no_local_data">本地数据中没有对应数据</string>
+          
+           <string name="button_onekey_tel">一键直联</string>
+           <string name="hint_search_for_xinghao">请输入要检索的型号</string>
+           <string name="error_oom_for_fapiao">发票照片分辨率太大了，内存不够，请重新尝试拍摄发票或则将相机的分辨率调低一些.</string>
+           
+         <string name="sure_install_tips">确定预约安装吗?</string>
+         <string name="sure_repair_tips">确定预约维修吗?</string>
+         
+         <!-- add by chenkai, 锁定认证字段 20140701 begin -->
+         <string name="msg_for_card_be_locked">"亲爱的用户，感谢您注册海尔产品。我们赠送您180天/365天（这里要看是0.5还是1）的整机延保期，如果产品有任何问题，欢迎使用电子保修卡预约安装/维修/咨询服务。"</string>
+         <string name="msg_for_card_be_locked_cant_edit">"该报修卡已经经过厂家认证，无法编辑。"</string>
+         <string name="msg_for_card_be_locked_cant_delete">"该报修卡已经经过厂家认证，无法删除。"</string>
+         <!-- add by chenkai, 锁定认证字段 20140701 end -->
+         
+         <string name="tel_not_register">当前手机号码未注册,请先注册</string>
+         
+          <string name="menu_goto">跳转到</string>
+          <string name="menu_fullscreen">全屏</string>
+          <string name="menu_fullscreen2">全屏</string>
+          
+          <string name="menu_ymessage">广播</string>
+          <string name="salesman_title">销售员</string>
+          <string name="serverman_title">服务员</string>
+          <string name="result_address_book">找到联系人信息</string>
+          <string name="msg_no_mm">"名号不存在，请检查"</string>
+          <string name="msg_read_no_data_when_download_vcf">请检查名片信息是否完整或存在，读取到-1</string>
+          <string name="msg_downloading_text">下载中...</string>
+  <string name="msg_download_ok">名片文件已下载保存</string>
+  <string name="result_create_contact">创建联系人成功</string>
+   		<string name="result_create_contact_failed">创建联系人失败</string>
+   		<string name="msg_download_card_success">名片下载成功</string>
+    <string name="msg_download_card_canceled">名片下载取消</string>
+    <string name="msg_save_card_success">名片保存成功</string>
+    
+    <string name="msg_vcf_read_error">"返回的VCF文件预览时读取错误，请检查"</string>
+     <string name="msg_vcf_format_error">"抱歉，暂时无法获取名号对应的vcf文件，稍后重试或是换个名号试试~"</string>
+     
+     <string name="password_accept_chars">"0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
+     <string name="msg_wait_for_fapiao_show">"正在进入图库显示发票，请稍后..."</string>
+     <string name="msg_no_existed_photo_in_service">抱歉，服务器上是没有找到对应的图片</string>
+     
+     <string name="button_commit">发送</string>
+     <string name="title_im_conversation">会话</string>
+     <string name="new_msg_comming">下面有新的消息</string>
+     <string name="msg_sending">发送中....</string>
+     <string name="msg_offline_confirm">你现在处于离线中，是否重新连接通讯服务器</string>
+     <string name="msg_im_status_logining">正在连接..</string>
+     <string name="msg_im_status_offline">离线</string>
+      <string name="title_my_product_deadline">距离质保结束</string>
+      <string name="product_deadline">距离质保结束</string>
+      <string name="title_business">星商圈</string>
+      <string name="button_create_account">创建星账户</string>
+      
+      <string name="msg_nonew_for_receive">数据已是最新</string>
+      <string name="msg_nomore_for_receive">服务器上没有更多数据了</string>
+      <string name="msg_network_error_for_receive">抱歉，暂时无法获取数据, 请检查网络或是稍后重试</string>
+      <string name="msg_refreshing_for_receive">正在更新数据</string>
+      <string name="msg_empty_list">(空)</string>
+      <string name="load_more_text">载入更多...</string>
+</resources>

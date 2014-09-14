@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <ScrollView android:id="@+id/scrollview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        android:scrollbars="none" >
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <RelativeLayout android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dip"
+                android:background="#ffdcdcdc">
+                <TextView android:id="@+id/name"
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:text="张三"
+                    />
+                
+                <TextView android:id="@+id/tel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/name"
+                    android:layout_marginLeft="4dip"
+                    android:layout_alignParentRight="true"
+                    android:text="1521621655215"
+                    />
+                
+                <TextView android:id="@+id/org"
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/name"
+                    android:layout_marginTop="4dip"
+                    android:text="dsadsadsa"
+                    />
+                
+                <TextView android:id="@+id/place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/org"
+                    android:layout_marginLeft="4dip"
+                    android:layout_marginTop="4dip"
+                    android:layout_below="@+id/tel"
+                    android:layout_alignParentRight="true"
+                    android:text="dddddd"
+                    />
+            </RelativeLayout>
+            
+        </LinearLayout>
+     </ScrollView>
+
+</LinearLayout>

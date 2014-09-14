@@ -1,0 +1,176 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+     <style name="AppTheme.NoTitleBar">
+       <item name="android:windowNoTitle">true</item>
+    </style>
+    
+     <style name="AppTheme" parent="Theme.Sherlock.Light.DarkActionBar">
+        <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
+        <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar</item>
+        <item name="android:windowBackground">@color/wt</item>
+        <item name="homeAsUpIndicator">@drawable/menu_back</item>
+        <item name="android:homeAsUpIndicator">@drawable/menu_back</item>
+        <!--  item name="android:windowFullscreen">true</item-->
+    </style>
+     <style name="AppTheme.MainActivityActionBar">
+        <item name="actionBarStyle">@style/Widget.Styled.ActionBar.MainActivity</item>
+        <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar.MainActivity</item>
+    </style>
+    <style name="Widget.Styled.ActionBar" parent="Widget.Sherlock.Light.ActionBar.Solid.Inverse">
+        <!--  item name="background">@color/action_bar_black</item-->
+        <!--   name="android:background">@color/action_bar_black</item-->
+        <item name="actionButtonStyle">@style/Widget.Sherlock.ActionButton</item>
+        <item name="android:actionButtonStyle">@style/Widget.Sherlock.ActionButton</item>
+    </style>
+    
+    <style name="Widget.Styled.ActionBar.MainActivity">
+        <item name="background">@drawable/top1</item>
+        <item name="android:background">@drawable/top1</item>
+        <item name="height">@dimen/title_logo_height</item>
+         <item name="android:height">@dimen/title_logo_height</item>
+    </style>
+    
+     <style name="Widget.Sherlock.ActionButton" parent="Widget">
+        <item name="android:background">?attr/actionBarItemBackground</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+
+        <item name="android:minWidth">@dimen/abs__action_button_min_width</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">12dip</item>
+        <item name="android:paddingRight">12dip</item>
+        <item name="android:scaleType">center</item>
+    </style>
+    
+    <style name="DashboardWidgetImage">
+        <item name="android:clickable">true</item>
+        <item name="android:layout_width">46dip</item>
+        <item name="android:layout_height">46dip</item>
+        <item name="android:layout_marginBottom">8dip</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+    
+     <style name="ProductInfo">
+        <item name="android:layout_width">80dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">4dip</item>
+        <item name="android:textColor">#ff716e6e</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="PeopleInfo">
+        <item name="android:layout_width">80dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">4dip</item>
+        <item name="android:textColor">@color/light_green</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    
+     <style name="ProductInfoInput">
+        <item name="android:layout_width">0dip</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@drawable/edit_text_holo_light</item>
+    </style>
+    
+     <style name="ProductInfoInputNew">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/edit_text_holo_light</item>
+    </style>
+
+     <style name="ProductInfoInputValidate">
+        <item name="android:layout_width">115dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@drawable/edit_text_holo_light</item>
+    </style>
+
+     <style name="ProductInfoInputPlace">
+        <item name="android:layout_width">70dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/edit_text_holo_light</item>
+    </style>
+
+     <style name="ProductInfoInput.Repair">
+        <item name="android:enabled">false</item>
+        <item name="android:background">@null</item>
+    </style>
+    
+      <style name="ProductInfo.Repair">
+        <item name="android:layout_width">95dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">4dip</item>
+        <item name="android:textColor">#ff716e6e</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    
+      <style name="DefaultShapeButton">
+        <item name="android:background">@drawable/default_black_btn</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:paddingLeft">10dip</item>
+        <item name="android:paddingRight">10dip</item>
+        <item name="android:textStyle">bold</item>
+         <item name="android:gravity">center</item>
+        <item name="android:layout_height">@dimen/default_color_button_height</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+    
+      <style name="DefaultShapeButton.Red">
+        <item name="android:background">@drawable/default_pink_btn</item>
+    </style>
+    
+      <style name="TextAppearance.Switch" parent="@*android:style/TextAppearance.Holo.Widget.Switch">
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="TextAppearance.PagerTabs" parent="@android:style/TextAppearance.DeviceDefault.Small">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">#ffe5e5e5</item>
+         
+    </style>
+	<style name="AnimationPreview">
+		<item name="android:windowEnterAnimation">@anim/fade_in</item>
+		<item name="android:windowExitAnimation">@anim/fade_out</item>
+	</style>
+	
+	 <style name="ProductInfoInputHomePlace">
+        <item name="android:layout_width">0dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/edit_text_holo_light</item>
+    </style>
+     <style name="ProductStarIcon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">2dip</item>
+        <item name="android:layout_marginRight">6dip</item>
+    </style>
+    
+      <style name="ViewProductInfo">
+        <item name="android:layout_width">0dip</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#ff716e6e</item>
+        <item name="android:singleLine">true</item>
+    </style>
+</resources>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent">
+
+  <SurfaceView android:id="@+id/preview_view"
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               android:layout_centerInParent="true"/>
+  <com.bestjoy.app.haierstartservice.qrcode.ViewfinderView
+      android:id="@+id/viewfinder_view"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:background="@color/transparent"/>
+
+  <LinearLayout android:id="@+id/result_view"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/result_view"
+                android:visibility="gone"
+                android:padding="4dip">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="top"
+        android:padding="12dip">
+
+      <LinearLayout
+          android:orientation="vertical"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:gravity="left|top">
+
+        <ImageView android:id="@+id/barcode_image_view"
+                   android:layout_width="@dimen/barcode_image_view_size"
+                   android:layout_height="@dimen/barcode_image_view_size"
+                   android:layout_marginBottom="4dip"
+                   android:scaleType="fitXY"/>
+        <TextView android:id="@+id/format_text_view"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="left"
+                  android:text="@string/msg_default_format"
+                  android:textColor="@color/result_minor_text"
+                  android:textSize="12sp"/>
+
+        <TextView android:id="@+id/type_text_view"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="left"
+                  android:text="@string/msg_default_type"
+                  android:textColor="@color/result_minor_text"
+                  android:textSize="12sp"/>
+
+      </LinearLayout>
+
+      <ScrollView
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="1">
+
+        <TextView android:id="@+id/contents_text_view"
+                  android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+                  android:gravity="left|top"
+                  android:text="@string/msg_default_contents"
+                  android:textColor="@color/result_text"
+                  android:textSize="22sp"
+                  android:paddingLeft="12dip"
+                  android:autoLink="all"/>
+
+      </ScrollView>
+
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/result_button_view"
+                  android:orientation="horizontal"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center">
+
+      <Button android:layout_width="0sp"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:textSize="14sp"
+              android:visibility="gone"/>
+
+      <Button android:layout_width="0sp"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:textSize="14sp"
+              android:visibility="gone"/>
+
+      <Button android:layout_width="0sp"
+      		  android:layout_weight="1"
+      		  android:textSize="14sp"
+              android:layout_height="wrap_content"
+              android:visibility="gone"/>
+
+      <Button android:layout_width="0sp"
+      		  android:layout_weight="1"
+      		  android:textSize="14sp"
+              android:layout_height="wrap_content"
+              android:visibility="gone"/>
+       <Button android:layout_width="0sp"
+      		  android:layout_weight="1"
+      		  android:textSize="14sp"
+              android:layout_height="wrap_content"
+              android:visibility="gone"/>
+       <Button android:id="@+id/shopper_button"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="14sp"
+              android:drawableLeft="@drawable/shopper_icon"
+              android:drawablePadding="4dip"
+              android:text="@string/button_google_shopper"
+              android:visibility="gone"/>
+
+    </LinearLayout>
+
+  </LinearLayout>
+
+  <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:background="@color/transparent">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:background="@color/transparent"/>
+
+    <!--  android:background="@color/status_view" -->
+    <LinearLayout android:id="@+id/status_view"
+                  android:orientation="horizontal"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="0"
+                  android:baselineAligned="false"
+                  android:padding="4dip">
+
+      <TextView android:id="@+id/status_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:layout_weight="1"
+                android:text="@string/msg_default_status"
+                android:textColor="@color/wt"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="left|center_vertical"/>
+      <!-- 目前不显示闪光灯按钮 -->
+       <ToggleButton android:id="@+id/status_view_flashlight"
+       			android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOn="@string/msg_default_status_on"
+                android:textOff="@string/msg_default_status_off"
+                android:checked="false"
+                android:visibility="gone"/>
+
+    </LinearLayout>
+
+  </LinearLayout>
+
+</FrameLayout>

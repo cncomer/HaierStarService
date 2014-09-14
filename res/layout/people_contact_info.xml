@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+	<TextView android:id="@+id/people_info_title"
+	    style="@style/PeopleInfo"
+	    android:text="@string/people_info"/>
+	
+    <View android:background="@color/light_green"
+        android:id="@+id/people_info_divider"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_marginTop="5dip"/>
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    android:orientation="horizontal" >
+	    <TextView style="@style/ProductInfo"
+	        android:text="@string/name"/>
+	    <EditText android:id="@+id/contact_name_input"
+	        style="@style/ProductInfoInput"/>
+	</LinearLayout>
+	
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center_vertical"
+	    android:orientation="horizontal" >
+	    <TextView style="@style/ProductInfo"
+	        android:text="@string/usr_tel"/>
+	    <EditText android:id="@+id/contact_tel_input"
+	        android:inputType="number"
+	        style="@style/ProductInfoInput"/>
+	</LinearLayout>
+</LinearLayout>

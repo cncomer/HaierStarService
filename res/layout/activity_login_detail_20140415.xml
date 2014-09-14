@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="#ffffffff"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/title_logo"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/title_logo_height"
+        android:scaleType="fitXY"
+        android:src="@drawable/top" />
+
+    <include layout="@layout/common_button_title" />
+    
+    <Button android:layout_width="wrap_content"
+        style="@style/DefaultShapeButton.Red"
+        android:text="@string/title_new_user_register"
+        android:layout_gravity="right"
+        android:layout_marginTop="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_marginTop="20dip"
+        android:layout_weight="1.0"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/ProductInfo"
+                    android:text="@string/usr_name" />
+
+                <EditText
+                    android:id="@+id/usr_name"
+                    style="@style/ProductInfoInput"
+                    android:hint="@string/usr_name_hint" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/ProductInfo"
+                    android:text="@string/usr_pwd" />
+
+                <EditText
+                    android:id="@+id/usr_pwd"
+                    style="@style/ProductInfoInput"
+                    android:hint="@string/usr_pwd_hint" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/ProductInfo"
+                    android:text="@string/usr_repwd" />
+
+                <EditText
+                    android:id="@+id/usr_repwd"
+                    style="@style/ProductInfoInput"
+                    android:hint="@string/usr_repwd_hint" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/ProductInfo"
+                    android:text="@string/usr_tel" />
+
+                <EditText
+                    android:id="@+id/usr_tel"
+                    style="@style/ProductInfoInput"
+                    android:hint="@string/usr_tel_hint" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/ProductInfo"
+                    android:text="@string/usr_validate" />
+
+                <EditText
+                    android:id="@+id/usr_validate"
+                    style="@style/ProductInfoInput"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:layout_marginTop="30dip"
+                android:layout_marginBottom="30dip"
+                android:background="@color/light_gray" />
+
+            <Button
+                android:id="@+id/button_save"
+                android:layout_width="156dip"
+                android:layout_height="42dip"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="60dip"
+                android:background="@drawable/default_black_btn"
+                android:gravity="center"
+                android:text="@string/button_save"
+                android:textColor="#ffffffff"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
