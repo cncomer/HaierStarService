@@ -45,4 +45,7 @@
 
     <dimen name="baoxiucard_avator_image_view_margin">10dip</dimen>
     
+    <!-- 我的名片预览处的QR码的大小 -->
+    <dimen name="mypreview_qr_image_view_size">180dip</dimen>
+    
 </resources>

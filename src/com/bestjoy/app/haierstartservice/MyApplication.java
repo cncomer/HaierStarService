@@ -30,6 +30,7 @@ import com.bestjoy.app.utils.VcfAsyncDownloadUtils;
 import com.bestjoy.app.utils.YouMengMessageHelper;
 import com.shwy.bestjoy.contacts.AddrBookUtils;
 import com.shwy.bestjoy.utils.ComConnectivityManager;
+import com.shwy.bestjoy.utils.ComPreferencesManager;
 import com.shwy.bestjoy.utils.DevicesUtils;
 import com.shwy.bestjoy.utils.SecurityUtils.SecurityKeyValuesObject;
 import com.umeng.analytics.MobclickAgent;
@@ -79,6 +80,7 @@ public class MyApplication extends Application{
 		//注册会用到IMEI号
 		DevicesUtils.getInstance().setContext(this);
 		ModuleViewUtils.getInstance().setContext(this);
+		ComPreferencesManager.getInstance().setContext(this);
 		
 	}
 	
@@ -131,7 +133,13 @@ public class MyApplication extends Application{
 		}
 		return productRoot;
 	}
-	
+	/**得到账户名片的头像图片文件*/
+	public File getAccountCardAvatorFile(String name) {
+		return new File(getAccountDir(MyAccountManager.getInstance().getCurrentAccountUid()), name+ ".p");
+	}
+	public File getAccountCardAvatorFile(String accountMd, String name) {
+		return new File(getAccountDir(accountMd), name+ ".p");
+	}
 	/**返回缓存目录caches/下面的临时头像文件*/
 	public File getCachedPreviewAvatorFile(String photoid) {
 		return new File(getCacheDir(), photoid+ ".p");

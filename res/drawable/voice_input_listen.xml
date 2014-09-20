@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:drawable="@drawable/voice1"
+        android:maxLevel="10"
+        android:minLevel="0" />
+    <item
+        android:drawable="@drawable/voice2"
+        android:maxLevel="20"
+        android:minLevel="10" />
+    <item
+        android:drawable="@drawable/voice3"
+        android:maxLevel="30"
+        android:minLevel="20" />
+</level-list>

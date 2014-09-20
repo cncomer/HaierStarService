@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cncom_title_bar"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/wt"
+    android:orientation="vertical">
+
+    <include layout="@layout/black_title"
+        android:background="@color/blk"/>
+   
+    <!-- title divider -->
+    <View android:id="@+id/cncom_title_divider"
+        android:layout_width="fill_parent"
+        android:background="#ff114388"
+        android:layout_height="1dp"/>
+
+    <FrameLayout android:id="@+id/cncom_content"
+        android:layout_height="0dip"
+        android:layout_weight="1.0"
+        android:layout_width="fill_parent"
+        />
+
+</LinearLayout>

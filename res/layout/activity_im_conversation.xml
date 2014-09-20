@@ -1,32 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    <include layout="@layout/relationship_item"
-        android:background="@color/wt"/>
-    <ListView android:id="@+id/listview"
-        android:layout_width="fill_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1.0"
-        android:scrollbars="none"
-        android:background="#ffeaeaea"
-        android:cacheColorHint="#00000000" />
-        
-    <!-- 输入编辑框 -->
-    <LinearLayout android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dip"
-        android:orientation="horizontal">
-        <EditText android:id="@+id/input"
-            android:layout_width="0dip"
-            android:maxLines="3"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"/>
-        <Button android:id="@+id/button_commit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_commit"/>
+    android:background="@color/wt" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <ListView
+	        android:id="@+id/listview"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dip"
+	        android:layout_weight="1.0"
+	        android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:scrollbars="none"
+	        android:cacheColorHint="#00000000"
+	        android:background="#fff4f4f4"
+	        android:divider="#19000000"
+	        android:dividerHeight="1dp"
+	        android:fadingEdge="none"
+	        android:listSelector="@drawable/abs__item_background_holo_light"
+	        android:fastScrollEnabled="false"
+	        android:footerDividersEnabled="false"
+	        android:headerDividersEnabled="false"
+	        android:smoothScrollbar="true" />
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <!-- 输入编辑框 -->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#ff165ec0"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dip" >
+
+                <EditText
+                    android:id="@+id/input"
+                    android:layout_width="0dip"
+                    android:layout_height="44dip"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/gray_boder_white_input"
+                    android:hint="@string/hint_input_message"
+                    android:imeOptions="actionSend"
+                    android:singleLine="true" />
+
+                <Button
+                    android:id="@+id/button_voice"
+                    android:layout_width="0dip"
+                    android:layout_height="40dip"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/gray_boder_blue_btn"
+                    android:text="@string/press_speak"
+                    android:textColor="@color/wt"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/button_text_icon"
+                    android:layout_width="44dip"
+                    android:layout_height="44dip"
+                    android:layout_marginLeft="10dip"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/text_icon" />
+
+                <ImageView
+                    android:id="@+id/button_voice_icon"
+                    android:layout_width="44dip"
+                    android:layout_height="44dip"
+                    android:layout_marginLeft="10dip"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/voice_icon" />
+
+                <ImageView
+                    android:id="@+id/button_add_icon"
+                    android:layout_width="44dip"
+                    android:layout_height="44dip"
+                    android:layout_marginLeft="10dip"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/media_icon" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/status_view"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/light_black"
+                android:gravity="center"
+                android:text="Connecting ...."
+                android:textColor="@color/wt"
+                android:textSize="20sp" />
+        </FrameLayout>
     </LinearLayout>
 
-</LinearLayout>
+    <!-- Popup Voice Layout -->
+    <LinearLayout
+        android:id="@+id/voice_input_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/blk"
+        android:gravity="center_horizontal"
+        android:minWidth="100dp"
+        android:orientation="vertical"
+        android:padding="20dip" >
+
+        <EditText
+            android:id="@+id/voice_input_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:enabled="false"
+            android:gravity="center"
+            android:hint="@string/hint_voice_input"
+            android:textColor="@color/wt"
+            android:textColorHint="@color/wt" />
+
+        <ImageView
+            android:id="@+id/voice_input_imageview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dip"
+            android:src="@drawable/voice_input_listen" />
+         <TextView
+            android:id="@+id/voice_input_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dip"
+            android:textColor="@color/wt" />
+    </LinearLayout>
+</FrameLayout>

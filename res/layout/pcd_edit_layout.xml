@@ -13,26 +13,32 @@
 	    <TextView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
+	        android:textColor="#ff5a5a5a"
 	        android:text="@string/address" />
 	    <EditText     
 	        android:id="@+id/edit_province"    
-                  style="@style/ProductInfoInputPlace" 
+            style="@style/ProductInfoInputPlace" 
+            android:textColor="#ff5a5a5a"
 	    	android:inputType="none"/>
 	    <TextView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
+	        android:textColor="#ff5a5a5a"
 	        android:text="@string/province" />
 	    <EditText     
 	        android:id="@+id/edit_city"
-                  style="@style/ProductInfoInputPlace"
+            style="@style/ProductInfoInputPlace"
+            android:textColor="#ff5a5a5a"
 	    	android:inputType="none"/>
 	    <TextView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
+	        android:textColor="#ff5a5a5a"
 	        android:text="@string/city" />
 	    <EditText     
 	        android:id="@+id/edit_district"
-                  style="@style/ProductInfoInputPlace"
+            style="@style/ProductInfoInputPlace"
+            android:textColor="#ff5a5a5a"
 	    	android:inputType="none"/>
 	    <TextView
 	        android:layout_width="wrap_content"
@@ -49,12 +55,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/address"
+            android:textColor="#ff5a5a5a"
             android:visibility="invisible" />
 
         <EditText
             android:id="@+id/edit_place_detail"
             style="@style/ProductInfoInputPlace"
             android:layout_weight="1"
+            android:textColor="#ff5a5a5a"
             android:inputType="none" />
     </LinearLayout>
 

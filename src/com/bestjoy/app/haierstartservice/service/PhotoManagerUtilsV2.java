@@ -37,6 +37,7 @@ import android.widget.ImageView;
 import com.bestjoy.app.haierstartservice.HaierServiceObject;
 import com.bestjoy.app.haierstartservice.MyApplication;
 import com.bestjoy.app.haierstartservice.R;
+import com.shwy.bestjoy.utils.Contents;
 import com.shwy.bestjoy.utils.DebugUtils;
 import com.shwy.bestjoy.utils.Intents;
 import com.shwy.bestjoy.utils.NetworkUtils;
@@ -149,6 +150,7 @@ public class PhotoManagerUtilsV2 {
 			MAX_RESULT_IMAGE_SIZE = mContext.getResources().getDimension(R.dimen.barcode_image_view_size);
 			mCurrentImageSize = MAX_RESULT_IMAGE_SIZE;
 			mDefaultKyBitmap = BitmapFactory.decodeResource(mResources, R.drawable.ky_default);
+			mDefaultBitmap = scaleBitmap(BitmapFactory.decodeResource(mResources, R.drawable.bjfile_icon), TaskType.PREVIEW);
 			mDefaultBaoxiucardAvator = BitmapFactory.decodeResource(mResources, R.drawable.baoxiuka_avator_default);
 		}
 		
@@ -354,6 +356,7 @@ public class PhotoManagerUtilsV2 {
 		case Baoxiucard_Salesman_Avator:
 			return mDefaultBaoxiucardAvator;
 		case PREVIEW:
+		case MYPREVIEW:
 			default:
 				return mDefaultBitmap; 
 		}
@@ -637,6 +640,8 @@ public class PhotoManagerUtilsV2 {
 			return MyApplication.getInstance().getProductFaPiaoFile(photoId);
 		case Baoxiucard_Salesman_Avator:
 			return MyApplication.getInstance().getCachedPreviewAvatorFile(photoId);
+		case MYPREVIEW:
+			return MyApplication.getInstance().getAccountCardAvatorFile(photoId);
 		case PREVIEW:
 			return MyApplication.getInstance().getCachedPreviewAvatorFile(photoId);
 		}
@@ -646,7 +651,9 @@ public class PhotoManagerUtilsV2 {
 	public static String getServiceUrl(TaskType type, String photoId) {
 		switch(type) {
 		case PREVIEW:
-			return null;
+		case MYPREVIEW:
+			return HaierServiceObject.getRelationshipAvatorUrl(photoId);
+//			return Contents.MingDang.buildAvatorUrl(photoId);
 		case HOME_DEVICE_AVATOR:
 			return HaierServiceObject.getProdcutAvatorUrl(photoId);
 		case FaPiao:
@@ -788,6 +795,8 @@ public class PhotoManagerUtilsV2 {
 	
 	public enum TaskType {
 		PREVIEW("PreviewVcfType"),
+		/**我的名片头像*/
+		MYPREVIEW("MyPreviewVcfType"), 
 		FaPiao("FaPiao"),
 		HOME_DEVICE_AVATOR("HomeDeviceAvatorType"),  //设备avator
 		Baoxiucard_Salesman_Avator("Baoxiucard_Salesman_Avator");

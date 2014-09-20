@@ -20,20 +20,25 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.view.Menu;
 import com.bestjoy.app.haierstartservice.HaierServiceObject;
+import com.bestjoy.app.haierstartservice.MyApplication;
 import com.bestjoy.app.haierstartservice.R;
 import com.bestjoy.app.haierstartservice.account.MyAccountManager;
 import com.bestjoy.app.haierstartservice.database.BjnoteContent;
+import com.bestjoy.app.haierstartservice.service.PhotoManagerUtilsV2;
 import com.bestjoy.app.haierstartservice.ui.PullToRefreshListPageActivity;
 import com.shwy.bestjoy.utils.AdapterWrapper;
+import com.shwy.bestjoy.utils.ComPreferencesManager;
 import com.shwy.bestjoy.utils.InfoInterface;
 import com.shwy.bestjoy.utils.PageInfo;
 import com.shwy.bestjoy.utils.Query;
 
 public class RelationshipActivity extends PullToRefreshListPageActivity{
-	
+	private static final String TAG = "RelationshipActivity";
+	public static final String FIRST = "RelationshipActivity.FIRST";
 	private Handler mHandler;
 	private static final int WHAT_REFRESH_LIST = 1000;
 	private RelationshipAdapter mRelationshipAdapter;
+	private boolean mIsRefresh = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,7 @@ public class RelationshipActivity extends PullToRefreshListPageActivity{
 		if (isFinishing()) {
 			return;
 		}
+		setShowHomeUp(true);
 		mHandler = new Handler() {
 
 			@Override
@@ -54,6 +60,15 @@ public class RelationshipActivity extends PullToRefreshListPageActivity{
 			}
 			
 		};
+		PhotoManagerUtilsV2.getInstance().requestToken(TAG);
+	}
+	@Override
+	protected boolean isNeedForceRefreshOnResume() {
+		boolean first = ComPreferencesManager.getInstance().isFirstLaunch(FIRST, true);
+		if (first) {
+			ComPreferencesManager.getInstance().setFirstLaunch(FIRST, false);
+		}
+		return first;
 	}
 	
 	 @Override
@@ -127,8 +142,11 @@ public class RelationshipActivity extends PullToRefreshListPageActivity{
 
 		@Override
 		protected void onContentChanged() {
+			if (mIsRefresh) {
+				return;
+			}
 			mHandler.removeMessages(WHAT_REFRESH_LIST);
-			mHandler.sendEmptyMessageDelayed(WHAT_REFRESH_LIST, 500);
+			mHandler.sendEmptyMessageDelayed(WHAT_REFRESH_LIST, 250);
 		}
 
 
@@ -169,11 +187,12 @@ public class RelationshipActivity extends PullToRefreshListPageActivity{
 	}
 	@Override
 	protected void onRefreshStart() {
+		mIsRefresh = true;
 		BjnoteContent.RELATIONSHIP.delete(getContentResolver(), BjnoteContent.RELATIONSHIP.CONTENT_URI, BjnoteContent.RELATIONSHIP.UID_SELECTION, new String[]{MyAccountManager.getInstance().getCurrentAccountUid()});
 	}
 	@Override
 	protected void onRefreshEnd() {
-		
+		mIsRefresh = false;
 	}
 
 

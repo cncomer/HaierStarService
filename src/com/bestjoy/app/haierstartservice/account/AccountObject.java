@@ -119,8 +119,19 @@ public class AccountObject implements InfoInterface{
 	}
 	
 	public static AccountObject getHaierAccountFromDatabase(Context context) {
+		return getHaierAccountFromDatabase(context, -1);
+	}
+	
+	public static AccountObject getHaierAccountFromDatabase(Context context, long uid) {
 		AccountObject haierAccount = null;
-		Cursor c = context.getContentResolver().query(BjnoteContent.Accounts.CONTENT_URI, PROJECTION, WHERE_DEFAULT, null, null);
+		Cursor c = null;
+		if (uid == -1) {
+			//默认账户
+			c = context.getContentResolver().query(BjnoteContent.Accounts.CONTENT_URI, PROJECTION, WHERE_DEFAULT, null, null);
+		} else {
+			//根据指定的uid查询账户
+			c = context.getContentResolver().query(BjnoteContent.Accounts.CONTENT_URI, PROJECTION, WHERE_UID, new String[]{String.valueOf(uid)}, null);
+		}
 		if (c != null) {
 			if (c.moveToNext()) {
 				haierAccount = new AccountObject();

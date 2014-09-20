@@ -8,6 +8,9 @@
     <drawable name="button_black">#ff1c1c1c</drawable>
     <drawable name="button_black_on">#ff717171</drawable>
     
+    <drawable name="button_blue">@drawable/model_my_idcard_n</drawable>
+    <drawable name="button_blue_on">@drawable/model_my_idcard_p</drawable>
+    
     <drawable name="button_pink">#ffff7872</drawable>
     <drawable name="button_pink_on">#fff5acb5</drawable>
     <drawable name="button_red">#ffa60c0c</drawable>

@@ -17,44 +17,52 @@ public class MenuHandlerUtils {
 	
     public static void onCreateOptionsMenu(Menu menu) {
     	
-        SubMenu subMenu1 = menu.addSubMenu(1000, R.string.menu_more, 1000, R.string.menu_more);
+    	SubMenu subMenu1 = menu.addSubMenu(1000, R.string.menu_more, 1000, R.string.menu_more);
         subMenu1.add(1000, R.string.menu_ymessage, 1000, R.string.menu_ymessage);
         subMenu1.add(1000, R.string.menu_login, 1001, R.string.menu_login);
         subMenu1.add(1000, R.string.menu_register, 1002, R.string.menu_register);
         subMenu1.add(1000, R.string.menu_setting, 1003, R.string.menu_setting);
-        subMenu1.add(1000, R.string.menu_about, 1004, R.string.menu_about);
-//        subMenu1.add(1000, R.string.menu_exit, 1005, R.string.menu_exit);
+        subMenu1.add(1000, R.string.menu_refresh, 1004, R.string.menu_refresh);
+        subMenu1.add(1000, R.string.menu_exit, 1005, R.string.menu_exit);
+        subMenu1.add(1000, R.string.menu_about, 1006, R.string.menu_about);
 
         MenuItem subMenu1Item = subMenu1.getItem();
-        subMenu1Item.setIcon(R.drawable.ic_menu_moreoverflow);
+        subMenu1Item.setTitle("");
+        subMenu1Item.setIcon(R.drawable.menu_more);
         subMenu1Item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
     }
     
     public static boolean onOptionsItemSelected(MenuItem item, Context context) {
+    	boolean handle = false;
         switch (item.getItemId()) {
         // Respond to the action bar's Up/Home button
         case R.string.menu_login:
         	LoginActivity.startIntent(context, null);
+        	handle = true;
      	   break;
         case R.string.menu_register:
         	RegisterActivity.startIntent(context, null);
+        	handle = true;
       	   break;
         case R.string.menu_setting:
         	SettingsPreferenceActivity.startActivity(context);
+        	handle = true;
       	   break;
         case R.string.menu_about:
         	context.startActivity(AppAboutActivity.createIntent(context));
+        	handle = true;
       	   break;
         case R.string.menu_ymessage:
         	//Ymessage历史记录
         	YMessageListActivity.startActivity(context);
+        	handle = true;
         	break;
 //        case R.string.menu_exit:
 //        	HaierAccountManager.getInstance().deleteDefaultAccount();
 //        	break;
 
         }
-        return false;
+        return handle;
     }
     
     public static boolean onPrepareOptionsMenu(Menu menu, Context context) {

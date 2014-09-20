@@ -89,7 +89,7 @@ public class HaierProCityDisEditPopView implements OnTouchListener {
 		DeviceDBHelper.DEVICE_HAIER_PROVICE,        //3
 		DeviceDBHelper.DEVICE_HAIER_CITY,  //4
 		DeviceDBHelper.DEVICE_HAIER_REGION_NAME,    //5
-		DeviceDBHelper.DEVICE_HAIER_ADMIN_CODE,
+		DeviceDBHelper.DEVICE_HAIER_ADMIN_CODE,     //6
 		
 		DeviceDBHelper.DEVICE_HAIER_PRO_CODE,  //pro_code    7 
 		DeviceDBHelper.DEVICE_HAIER_CITY_CODE, //city_code   8
@@ -104,6 +104,7 @@ public class HaierProCityDisEditPopView implements OnTouchListener {
 	private static final int PROVICE_NAME_INDEX = 3;
 	private static final int CITY_NAME_INDEX = 4;
 	private static final int AREA_NAME_INDEX = 5;
+	private static final int ADMIN_CODE_INDEX = 6;
 	//add by chenkai, 根据省市区一起查找区域码 end
 	public HaierProCityDisEditPopView(Context context, View view) {
 		mContext = context;
@@ -175,7 +176,7 @@ public class HaierProCityDisEditPopView implements OnTouchListener {
 		Cursor cursor = mContext.getContentResolver().query(
 				BjnoteContent.HaierRegion.CONTENT_URI, AREA_REGION_PROJECTION, selection, null, null);
 		if(cursor.moveToNext()) {
-			mAdminCode = cursor.getString(cursor.getColumnIndex(DeviceDBHelper.DEVICE_HAIER_ADMIN_CODE));
+			mAdminCode = cursor.getString(6);
 		}
 		if (cursor != null) {
 			cursor.close();
@@ -309,7 +310,7 @@ public class HaierProCityDisEditPopView implements OnTouchListener {
 				case MODE_DISTRICT:
 					mHomeObject.mHomeDis = mAddressAdapter.getItemTitle(position);
 					mDisEditView.setText(mHomeObject.mHomeDis);
-					mAdminCode = mAddressAdapter.getRegionCode(position);
+					mAdminCode = mAddressAdapter.getAdminCode(position);
 					break;
 				
 				}
@@ -323,9 +324,9 @@ public class HaierProCityDisEditPopView implements OnTouchListener {
 			super(context, c, autoRequery);
 		}
 		
-		public String getRegionCode(int position) {
-			long id = getItemId(position);
-			return String.valueOf(id);
+		public String getAdminCode(int position) {
+			Cursor c = (Cursor) getItem(position);
+			return String.valueOf(c.getLong(ADMIN_CODE_INDEX));
 		}
 
 		@Override

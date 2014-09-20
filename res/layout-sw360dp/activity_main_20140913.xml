@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="360dip"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal" 
+    tools:context=".MainActivity" >
+
+    <!-- my card  -->
+    <com.bestjoy.app.haierstartservice.view.ModuleView 
+        android:id="@+id/model_my_idcard"
+	    android:layout_width="340dip"
+	    android:layout_height="80dip"
+	    android:background="@drawable/model_my_idcard"
+	    android:layout_marginTop="10dip"
+	    android:layout_marginLeft="10dip"
+	    android:layout_marginRight="10dip"
+	    android:orientation="vertical" >
+	    <TextView android:id="@+id/title"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        android:textSize="25sp"
+	        android:textColor="@color/wt"
+	        android:textStyle="bold"
+	        android:text="@string/model_my_idcard"/>
+	
+	    <TextView 
+	        android:id="@+id/new_flag"
+	        android:layout_height="50dip"
+	        android:layout_width="50dip"
+	        android:textSize="16sp"
+	        android:gravity="right"
+	        android:paddingRight="4dip"
+	        android:paddingTop="9dip"
+	        android:textColor="#ff084309"
+	        android:layout_alignParentTop="true"
+	        android:layout_alignParentRight="true"/>
+	</com.bestjoy.app.haierstartservice.view.ModuleView>
+	
+    <RelativeLayout android:layout_width="fill_parent"
+        android:layout_marginLeft="10dip"
+		android:layout_marginRight="10dip"
+        android:layout_height="180dip">
+        
+        <!-- my business  -->
+	    <com.bestjoy.app.haierstartservice.view.ModuleView 
+	        android:id="@+id/model_my_business"
+		    android:layout_width="165dip"
+		    android:layout_height="180dip"
+		    android:background="@drawable/model_my_business"
+		    android:layout_marginTop="10dip"
+		    android:layout_gravity="center_horizontal"
+		    android:orientation="vertical" >
+		    <TextView android:id="@+id/title"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_centerInParent="true"
+		        android:textSize="25sp"
+		        android:textColor="@color/wt"
+		        android:textStyle="bold"
+		        android:text="@string/model_my_business"/>
+		
+		    <TextView 
+		        android:id="@+id/new_flag"
+		        android:layout_height="50dip"
+		        android:layout_width="50dip"
+		        android:textSize="16sp"
+		        android:gravity="right"
+		        android:paddingRight="4dip"
+		        android:paddingTop="9dip"
+		        android:background="@drawable/model_my_business_new"
+		        android:textColor="#ff084309"
+		        android:layout_alignParentTop="true"
+		        android:layout_alignParentRight="true"
+		        android:visibility="gone"
+		        android:text="99"/>
+		</com.bestjoy.app.haierstartservice.view.ModuleView>
+		
+	    <!-- my new baoxiucard  -->
+	    <com.bestjoy.app.haierstartservice.view.ModuleView 
+	        android:id="@+id/model_new_baoxiucard"
+		    android:layout_width="165dip"
+		    android:layout_height="85dip"
+		    android:layout_marginLeft="10dip"
+		    android:layout_toRightOf="@+id/model_my_business"
+		    android:background="@drawable/model_new_baoxiucard"
+		    android:layout_marginTop="10dip"
+		    android:layout_gravity="center_horizontal"
+		    android:orientation="vertical" >
+		    <TextView android:id="@+id/title"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_centerInParent="true"
+		        android:textSize="25sp"
+		        android:textColor="@color/wt"
+		        android:textStyle="bold"
+		        android:text="@string/model_new_baoxiucard"/>
+		
+		    <TextView 
+		        android:id="@+id/new_flag"
+		        android:layout_height="50dip"
+		        android:layout_width="50dip"
+		        android:textSize="16sp"
+		        android:gravity="right"
+		        android:paddingRight="4dip"
+		        android:paddingTop="9dip"
+		        android:textColor="#ff084309"
+		        android:layout_alignParentTop="true"
+		        android:layout_alignParentRight="true"/>
+		</com.bestjoy.app.haierstartservice.view.ModuleView>
+		
+	    <!-- my messages-->
+	    <com.bestjoy.app.haierstartservice.view.ModuleView 
+	        android:id="@+id/model_my_messages"
+		    android:layout_width="165dip"
+		    android:layout_height="85dip"
+		    android:layout_marginLeft="10dip"
+		    android:layout_toRightOf="@+id/model_my_business"
+		    android:layout_below="@+id/model_new_baoxiucard"
+		    android:background="@drawable/model_my_messages"
+		    android:layout_marginTop="10dip"
+		    android:layout_gravity="center_horizontal"
+		    android:orientation="vertical" >
+		    <TextView android:id="@+id/title"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_centerInParent="true"
+		        android:textSize="25sp"
+		        android:textColor="@color/wt"
+		        android:textStyle="bold"
+		        android:text="@string/model_my_messages"/>
+		
+		    <TextView 
+		        android:id="@+id/new_flag"
+		        android:layout_height="50dip"
+		        android:layout_width="50dip"
+		        android:textSize="16sp"
+		        android:gravity="right"
+		        android:paddingRight="4dip"
+		        android:paddingTop="9dip"
+		        android:textColor="#ff084309"
+		        android:layout_alignParentTop="true"
+		        android:layout_alignParentRight="true"/>
+		</com.bestjoy.app.haierstartservice.view.ModuleView>
+    </RelativeLayout>
+    
+    <!-- my store  -->
+    <com.bestjoy.app.haierstartservice.view.ModuleView 
+        android:id="@+id/model_my_store"
+	    android:layout_width="340dip"
+	    android:layout_height="80dip"
+	    android:background="@drawable/model_my_store"
+	    android:layout_marginTop="10dip"
+	    android:layout_marginLeft="10dip"
+	    android:layout_marginRight="10dip"
+	    android:orientation="vertical" >
+	    <TextView android:id="@+id/title"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        android:textSize="25sp"
+	        android:textColor="@color/wt"
+	        android:textStyle="bold"
+	        android:text="@string/model_my_store"/>
+	
+	    <TextView 
+	        android:id="@+id/new_flag"
+	        android:layout_height="50dip"
+	        android:layout_width="50dip"
+	        android:textSize="16sp"
+	        android:gravity="right"
+	        android:paddingRight="4dip"
+	        android:paddingTop="9dip"
+	        android:textColor="#ff084309"
+	        android:layout_alignParentTop="true"
+	        android:layout_alignParentRight="true"/>
+	</com.bestjoy.app.haierstartservice.view.ModuleView>
+
+</LinearLayout>

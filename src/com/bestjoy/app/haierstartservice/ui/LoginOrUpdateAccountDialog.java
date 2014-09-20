@@ -20,11 +20,13 @@ import com.bestjoy.app.haierstartservice.R;
 import com.bestjoy.app.haierstartservice.account.AccountObject;
 import com.bestjoy.app.haierstartservice.account.AccountParser;
 import com.bestjoy.app.haierstartservice.account.MyAccountManager;
+import com.bestjoy.app.haierstartservice.im.RelationshipActivity;
 import com.bestjoy.app.haierstartservice.service.IMService;
 import com.bestjoy.app.haierstartservice.update.UpdateService;
 import com.bestjoy.app.utils.DebugUtils;
 import com.bestjoy.app.utils.YouMengMessageHelper;
 import com.shwy.bestjoy.utils.AsyncTaskUtils;
+import com.shwy.bestjoy.utils.ComPreferencesManager;
 import com.shwy.bestjoy.utils.Intents;
 import com.shwy.bestjoy.utils.NetworkUtils;
 /**
@@ -123,6 +125,8 @@ public class LoginOrUpdateAccountDialog extends Activity{
 				YouMengMessageHelper.getInstance().saveDeviceTokenStatus(false);
 				//登录成功，我们需要检查是否能够上传设备Token到服务器绑定uid和token
 				UpdateService.startCheckDeviceTokenToService(LoginOrUpdateAccountDialog.this);
+				//每次登录我们都重新设置需要重新拉好友列表
+				ComPreferencesManager.getInstance().setFirstLaunch(RelationshipActivity.FIRST, true);
 			} else {
 				MyApplication.getInstance().showMessage(mAccountObject.mStatusMessage);
 				setResult(Activity.RESULT_CANCELED);

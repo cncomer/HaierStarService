@@ -3,7 +3,7 @@
 
     <string name="app_name">星服务</string>
     <string name="app_name_2014">星服务 2014</string>
-    <string name="app_id">5350f3d3</string>
+    <string name="app_id">541aafb6</string>
     <string name="button_register">新用户注册</string>
      <string name="button_find_password">找回密码</string>
     <string name="button_new_card">新建保修卡</string>
@@ -427,6 +427,8 @@
      <string name="msg_offline_confirm">你现在处于离线中，是否重新连接通讯服务器</string>
      <string name="msg_im_status_logining">正在连接..</string>
      <string name="msg_im_status_offline">离线</string>
+     <string name="msg_im_status_no_network">无网络连接</string>
+     <string name="msg_offline_confirm_click">你现在处于离线中，点击重新连接通讯服务器</string>
       <string name="title_my_product_deadline">距离质保结束</string>
       <string name="product_deadline">距离质保结束</string>
       <string name="title_business">星商圈</string>
@@ -438,4 +440,30 @@
       <string name="msg_refreshing_for_receive">正在更新数据</string>
       <string name="msg_empty_list">(空)</string>
       <string name="load_more_text">载入更多...</string>
+      
+       <string name="hint_input_message">"请输入内容... ..."</string>
+      <string name="press_speak">按住说话</string>
+      <string name="msg_cancel_voice_input_down">手指上滑，取消识别</string>
+      <string name="msg_cancel_voice_input_by_cancel">手指下滑，开始识别</string>
+      <string name="hint_voice_input_wait">正在识别....</string>
+      <string name="hint_voice_input">请开始说话</string>
+      <string name="hint_voice_input_canceled">已取消</string>
+      
+       <string name="title_id_card_view">星名片</string>
+      <string name="card_name">"姓名:"</string>
+      <string name="card_tel">"电话:"</string>
+      <string name="card_org">"店名:"</string>
+      <string name="card_workplace">"地址:"</string>
+      <string name="card_pinpai">"品牌:"</string>
+      <string name="card_qrcode">"扫描二维码:"</string>
+      <string name="card_xinghao">"型号:"</string>
+      <string name="msg_empty_card_name">"请输入客户姓名"</string>
+      <string name="msg_empty_card_tel">"请输入客户电话"</string>
+      <string name="msg_empty_card_address">"请输入客户的完整地址"</string>
+       <string name="msg_empty_card_xinghao">"请输入型号或扫描"</string>
+      <string name="title_create_user_baoxiucard">星保修</string>
+      <string name="customer_info">"客户资料:"</string>
+      
+      <string name="format_fapiao_date">"发票日期: %s"</string>
+      
 </resources>

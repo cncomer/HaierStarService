@@ -1,22 +1,29 @@
 package com.bestjoy.app.haierstartservice.im;
 
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.net.Uri;
 import android.text.TextUtils;
 
+import com.bestjoy.app.haierstartservice.HaierServiceObject.HaierResultObject;
 import com.bestjoy.app.haierstartservice.database.BjnoteContent;
 import com.bestjoy.app.haierstartservice.database.HaierDBHelper;
 import com.shwy.bestjoy.utils.DebugUtils;
+import com.shwy.bestjoy.utils.InfoInterface;
+import com.shwy.bestjoy.utils.NetworkUtils;
+import com.shwy.bestjoy.utils.PageInfo;
 
 public class IMHelper {
 
@@ -72,7 +79,7 @@ public class IMHelper {
 	public static final int INDEX_LOCAL_TIME = 8;
 	public static final int INDEX_STATUS = 9;
 	/**按照消息的服务器id升序排序*/
-	public static final String SORT_BY_MESSAGE_ID = HaierDBHelper.ID + " asc";
+	public static final String SORT_BY_MESSAGE_ID = HaierDBHelper.IM_SERVICE_TIME + " asc";
 	
 //	public static final String UID_AND_TARGET_SELECTION = HaierDBHelper.IM_UID + "=? and " + HaierDBHelper.IM_TARGET_TYPE + "=? and " + HaierDBHelper.IM_TARGET + "=?";
 	public static final String QUN_SELECTION = HaierDBHelper.IM_TARGET_TYPE + "=? and " + HaierDBHelper.IM_TARGET + "=?";
@@ -176,6 +183,14 @@ public class IMHelper {
 		return cr.update(BjnoteContent.IM.CONTENT_URI, values, where, selectionArgs);
 	}
 	
+	public static void deleteAllMessages(ContentResolver cr, long uid) {
+		DebugUtils.logD(TAG, "deleteAllMessages for uid " + uid);
+		 int deleted = cr.delete(BjnoteContent.IM.CONTENT_URI_QUN, UID_SELECTION, new String[]{String.valueOf(uid)});
+		 DebugUtils.logD(TAG, "deleteAllQunMessages " + deleted);
+		 deleted = cr.delete(BjnoteContent.IM.CONTENT_URI_FRIEND, UID_SELECTION, new String[]{String.valueOf(uid)});
+		 DebugUtils.logD(TAG, "deleteAllFriendsMessages " + deleted);
+	}
+	
 	public static ConversationItemObject getConversationItemObject(JSONObject result) {
 		ConversationItemObject conversationItemObject = new ConversationItemObject();
 		if (result != null) {
@@ -198,6 +213,57 @@ public class IMHelper {
 		new Exception(TAG + "getConversationItemObject return null").printStackTrace();
 		return null;
 		
+	}
+	
+	public static List<ConversationItemObject> parseList(InputStream is, PageInfo pageInfo, int targetType) {
+		HaierResultObject serviceResultObject = HaierResultObject.parse(NetworkUtils.getContentFromInput(is));
+		List<ConversationItemObject> list = new ArrayList<ConversationItemObject>();
+		if (serviceResultObject.isOpSuccessfully()) {
+			try {
+				JSONObject jsonObject = serviceResultObject.mJsonData;
+				pageInfo.mTotalCount = jsonObject.getInt("total");
+				JSONArray rows = jsonObject.getJSONArray("rows");
+				long rowsLen = rows.length();
+				
+				DebugUtils.logD(TAG, "parseList find rows " + rowsLen);
+				ConversationItemObject conversationItemObject = null;
+				for(int index = 0; index < rowsLen; index++) {
+					jsonObject = rows.getJSONObject(index);
+					conversationItemObject = new ConversationItemObject();
+					conversationItemObject.mMessageStatus = 1;
+					conversationItemObject.mServiceId = jsonObject.getString("mid");
+					conversationItemObject.mMessage = jsonObject.getString("mcontent");
+					conversationItemObject.mUid = jsonObject.getString("fuser");
+					conversationItemObject.mUName = jsonObject.getString("fname");
+					conversationItemObject.mTarget = jsonObject.getString("tuser");
+					conversationItemObject.mTargetType = targetType;
+					String timeStr = jsonObject.optString("mestime", "");
+					try {
+						Date date = SERVICE_DATE_TIME_FORMAT.parse(timeStr);
+						conversationItemObject.mServiceDate = date.getTime();
+						DebugUtils.logD(TAG, "getConversationItemObject convert timeStr " + timeStr + " to Date " + conversationItemObject.mServiceDate);
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					list.add(conversationItemObject);
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+		
+	}
+	public static int saveList(ContentResolver cr, List<? extends InfoInterface> infoObjects) {
+		int insertOrUpdateCount = 0;
+		if (infoObjects != null) {
+			for(InfoInterface object:infoObjects) {
+				if (object.saveInDatebase(cr, null)) {
+					insertOrUpdateCount++;
+				}
+			}
+		}
+		return insertOrUpdateCount;
 	}
 	
 	public static class ImServiceResultObject {

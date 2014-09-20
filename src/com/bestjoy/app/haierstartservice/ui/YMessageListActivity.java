@@ -131,6 +131,7 @@ public class YMessageListActivity extends BaseActionbarActivity{
 	
 	public static void startActivity(Context context) {
 		Intent intent = new Intent(context, YMessageListActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		context.startActivity(intent);
 	}
 

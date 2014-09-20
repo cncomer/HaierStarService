@@ -26,7 +26,6 @@
 	        android:layout_width="fill_parent"
 	        android:text="name"
 	        android:drawableLeft="@drawable/ic_flag_tag"
-	        android:drawablePadding="6dip"
 	        android:textSize="13sp"/>
         
         <TextView android:id="@+id/data2"
@@ -34,7 +33,6 @@
 	        android:layout_width="fill_parent"
 	        android:layout_marginTop="6dip"
 	        android:text="name"
-	        android:drawablePadding="6dip"
 	        android:drawableLeft="@drawable/ic_flag_sn"
 	        android:textSize="13sp" />
     </LinearLayout>
@@ -49,7 +47,6 @@
 	        android:layout_height="wrap_content"
 	        android:layout_width="fill_parent"
 	        android:text="name"
-	        android:drawablePadding="6dip"
 	        android:drawableLeft="@drawable/ic_flag_tel"
 	        android:textSize="13sp" />
         
@@ -58,7 +55,6 @@
 	        android:layout_width="fill_parent"
 	        android:text="name"
 	        android:layout_marginTop="6dip"
-	        android:drawablePadding="6dip"
 	        android:drawableLeft="@drawable/ic_flag_date"
 	        android:textSize="13sp" />
     </LinearLayout>

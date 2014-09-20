@@ -85,20 +85,20 @@ public class BaoxiuCardObject extends InfoInterfaceImpl {
 	/**发票的名字*/
 	public String mFPName = "";
 	//modify by chenkai, 20140701, 将发票地址存进数据库（不再拼接），增加海尔奖励延保时间 end
-	public String mBuyDate;
-	public String mBuyPrice;
-	public String mBuyTuJing;
+	public String mBuyDate="";
+	public String mBuyPrice="";
+	public String mBuyTuJing="";
 	/**整机保修时间，浮点型, 默认是1年*/
 	public String mWY = "1";
 	public String mYanBaoTime = "0";
-	public String mYanBaoDanWei;
+	public String mYanBaoDanWei="";
 	/**用户定义的保修设备名称，如客厅电视机*/
-	public String mCardName;
+	public String mCardName="";
 	/**主要配件保修，浮点值*/
 	public String mZhuBx = "0";
 	/**延保电话*/
-	public String mYBPhone;
-	public String mKY;
+	public String mYBPhone="";
+	public String mKY="";
 	/**本地id*/
 	public long mId = -1;
 	public long mUID = -1, mAID = -1, mBID = -1;

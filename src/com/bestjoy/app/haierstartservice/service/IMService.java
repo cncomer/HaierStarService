@@ -57,11 +57,12 @@ public class IMService extends Service{
 	/**收到用户验证失败的消息*/
 	public static final int WHAT_SEND_MESSAGE_INVALID_USER = 1004;
 	/**30s*/
-	private static final int HEART_BEAT_DELAY_TIME = 120 * 1000;
+	private static final int HEART_BEAT_DELAY_TIME = 30 * 1000;
 	/**在会话结束前，我们需要等待，比如退出当前界面*/
 	private boolean mIsConnected = false;
 	/**会话中信息不会显示成Notification*/
 	private boolean mIsInConversationSession = false;
+	private String mConversationSessionTarget = "";
 	
 	private ContentResolver mContentResolver;
 	WifiManager.MulticastLock mMulticastLock;
@@ -92,10 +93,13 @@ public class IMService extends Service{
 				super.handleMessage(msg);
 				switch(msg.what) {
 				case WHAT_SEND_MESSAGE_LOGIN:
+					AccountObject accountObject = MyAccountManager.getInstance().getAccountObject();
+					if (accountObject == null) {
+						return;
+					}
 					NotifyRegistrant.getInstance().notify(WHAT_SEND_MESSAGE_LOGIN);
 					//发送登录消息
 					try {
-						AccountObject accountObject = MyAccountManager.getInstance().getAccountObject();
 						sendMessageLocked(IMHelper.createOrJoinConversation(String.valueOf(accountObject.mAccountUid), accountObject.mAccountPwd, accountObject.mAccountName).toString().getBytes("UTF-8"));
 						//心跳检测
 				 		mWorkHandler.sendEmptyMessageDelayed(WHAT_SEND_MESSAGE_LOGIN, HEART_BEAT_DELAY_TIME);
@@ -115,6 +119,7 @@ public class IMService extends Service{
 					try {
 						//在发送消息的时候，我们先在本地新增一条发送中的数据
 						ConversationItemObject message = (ConversationItemObject) msg.obj;
+						message.setReadStatus(ConversationItemObject.SEEN);
 						message.saveInDatebaseWithoutCheckExisted(mContentResolver, null);
 						sendMessageLocked(IMHelper.createMessageConversation(message).toString().getBytes("UTF-8"));
 					} catch (UnsupportedEncodingException e) {
@@ -148,10 +153,12 @@ public class IMService extends Service{
 		if (intent != null) {
 			String action = intent.getAction();
 			if (ACTION_CONNECT_IM_SERVICE.equals(action)) {
+				setIsInConversationSession(false, "");
 				mWorkHandler.removeMessages(WHAT_SEND_MESSAGE_EXIT);
 				mWorkHandler.removeMessages(WHAT_SEND_MESSAGE_LOGIN);
 				mWorkHandler.sendEmptyMessageDelayed(WHAT_SEND_MESSAGE_LOGIN, 500);//立即登录一次
 			} else if (ACTION_DISCONNECT_IM_SERVICE.equals(action)) {
+				setIsInConversationSession(false, "");
 				Message msg = obtainExitMessage(intent);
 				mWorkHandler.removeMessages(WHAT_SEND_MESSAGE_LOGIN);
 				mWorkHandler.sendMessage(msg);
@@ -210,8 +217,9 @@ public class IMService extends Service{
 		return mIsConnected;
 	}
 	
-	public void setIsInConversationSession(boolean inConversationSession) {
+	public void setIsInConversationSession(boolean inConversationSession, String target) {
 		mIsInConversationSession = inConversationSession;
+		mConversationSessionTarget = target;
 	}
 	
 	public static void startService(Context context) {
@@ -277,6 +285,11 @@ public class IMService extends Service{
 	
 	private void receiveMessageLocked(String message) {
 		DebugUtils.logD(TAG, "receiveMessageLocked receive: " + message);
+		AccountObject accountObject = MyAccountManager.getInstance().getAccountObject();
+		if (accountObject == null) {
+			DebugUtils.logD(TAG, "receiveMessageLocked ignore due to  accountObject == null");
+			return;
+		}
 		if (!TextUtils.isEmpty(message)) {
 			IMHelper.ImServiceResultObject serviceResult = IMHelper.ImServiceResultObject.parse(message);
 			if (serviceResult.isOpSuccessfully()) {
@@ -302,16 +315,32 @@ public class IMService extends Service{
 							if (conversationItemObject.mUid.equals(MyAccountManager.getInstance().getCurrentAccountUid())) {
 								//服务器返回了我们之前发送的信息，表明该条消息发送成功，我们更新本地信息的发送状态
 								conversationItemObject.mMessageStatus = 1;
+								conversationItemObject.setReadStatus(ConversationItemObject.SEEN);
 								conversationItemObject.updateInDatebase(mContentResolver, null);
 							}
 						} else if (IMHelper.TYPE_MESSAGE_FORWARD == type) {
 							//收到其他用户发来的消息，我们只要保存就好了
 							conversationItemObject.mId = -1;
 							conversationItemObject.mMessageStatus = 1; //对于收到的信息发送状态总是已发送的
+							if (mIsInConversationSession) {
+								//已在会话中，我们需要确定这条消息是否是当前会话的，是的话，标记为已读
+								if (conversationItemObject.mTarget.equals(MyAccountManager.getInstance().getCurrentAccountUid()) && 
+										mConversationSessionTarget.equals(conversationItemObject.mUid)) {
+									conversationItemObject.setReadStatus(ConversationItemObject.SEEN);
+									DebugUtils.logD(TAG, "mark seen " + conversationItemObject.mMessage);
+								} else {
+									DebugUtils.logD(TAG, "mark unseen " + conversationItemObject.mMessage);
+								}
+							} else {
+								//不在会话中，我们需要标记该消息未读
+								conversationItemObject.setReadStatus(ConversationItemObject.UN_SEEN);
+								DebugUtils.logD(TAG, "mark unseen " + conversationItemObject.mMessage);
+							}
+							
 							conversationItemObject.saveInDatebase(mContentResolver, null);
 						}
 						if (!mIsInConversationSession) {
-							MyApplication.getInstance().showMessageAsync("Rec message " + conversationItemObject.mMessage);
+//							MyApplication.getInstance().showMessageAsync("Rec message " + conversationItemObject.mMessage);
 						}
 					}
 					break;

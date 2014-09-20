@@ -72,6 +72,7 @@
 		        android:paddingTop="9dip"
 		        android:background="@drawable/model_my_business_new"
 		        android:textColor="#ff084309"
+		        android:visibility="gone"
 		        android:layout_alignParentTop="true"
 		        android:layout_alignParentRight="true"
 		        android:text="99"/>

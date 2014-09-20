@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="#ffffffff"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1.0"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <!-- 用户资料 -->
+             <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffdcdcdc"
+                android:padding="20dip">
+
+                <TextView android:id="@+id/name"
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ff5a5a5a"
+                    android:textSize="16sp"
+                    android:text="name" />
+
+                <TextView
+                    android:id="@+id/tel"
+                    android:layout_width="170dip"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ff5a5a5a"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="4dip"
+                    android:layout_toRightOf="@+id/name"
+                    android:text="tel" />
+                
+                
+                <TextView android:id="@+id/org"
+                    android:layout_below="@+id/tel"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ff5a5a5a"
+                    android:textSize="16sp"
+                    android:text="org" />
+
+                <TextView
+                    android:id="@+id/workplace"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="#ff5a5a5a"
+                    android:textSize="16sp"
+                    android:layout_below="@+id/org"
+                    android:text="workplace" />
+            </RelativeLayout>
+            
+            <!-- 客户资料 -->
+            <LinearLayout
+                android:layout_width="fill_parent"
+            	android:layout_height="wrap_content"
+            	android:padding="20dip"
+           		android:orientation="vertical">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/customer_info"
+                     android:textColor="#ff165ec0"
+                    android:textSize="16sp"/> 
+                <LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:gravity="center_vertical"
+	                android:orientation="horizontal" >
+	
+	                <TextView
+				        android:layout_width="wrap_content"
+	                     android:layout_height="wrap_content"
+				         android:textColor="#ff5a5a5a"
+                   		 android:textSize="16sp"
+	                    android:text="@string/card_name" />
+	
+	                <EditText
+	                    android:id="@+id/usr_name"
+	                     android:textColor="#ff5a5a5a"
+	                     android:layout_width="fill_parent"
+	                     android:layout_height="wrap_content"
+                    	android:textSize="16sp"/>
+	            </LinearLayout>
+	            
+                <LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:gravity="center_vertical"
+	                android:orientation="horizontal" >
+	
+	                <TextView
+	                    android:layout_width="wrap_content"
+	                     android:layout_height="wrap_content"
+	                     android:textColor="#ff5a5a5a"
+                    	android:textSize="16sp"
+	                    android:text="@string/card_tel" />
+	
+	                <EditText
+	                    android:id="@+id/usr_tel"
+	                    android:layout_width="fill_parent"
+	                     android:layout_height="wrap_content"
+	                     android:textColor="#ff5a5a5a"
+                    	android:textSize="16sp"
+	                    android:digits="@string/password_accept_chars" />
+	            </LinearLayout>
+	            
+                <include layout="@layout/pcd_edit_layout" />
+            </LinearLayout>
+			
+		    <View
+		        android:layout_width="fill_parent"
+		        android:layout_height="1dip"
+		        android:background="#ff165ec0"/>
+
+		    <!-- 客户资料 -->
+            <LinearLayout 
+                android:layout_width="fill_parent"
+            	android:layout_height="wrap_content"
+            	android:padding="20dip"
+           		android:orientation="vertical">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu_bill_edit"
+                     android:textColor="#ff165ec0"
+                    android:textSize="16sp"/> 
+                    
+                <ImageView android:id="@+id/button_scan_bill"
+                    android:layout_marginTop="5dip"
+                    android:layout_gravity="center"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_scan_bill"
+                    android:layout_width="140dip"
+                    android:layout_height="100dip"
+                    android:background="#ffdcdcdc"/>
+                
+                <TextView 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dip"
+                    android:text="@string/format_fapiao_date"
+                     android:layout_gravity="center"
+                     android:textColor="#ff165ec0"
+                     android:id="@+id/date"
+                    android:textSize="16sp"/> 
+                
+            </LinearLayout>
+			
+		    <View
+		        android:layout_width="fill_parent"
+		        android:layout_height="1dip"
+		        android:background="#ff165ec0"/>
+		    
+		    <!-- 扫描二维码 -->
+            <RelativeLayout 
+                android:layout_width="fill_parent"
+            	android:layout_height="wrap_content"
+            	android:padding="20dip"
+           		android:orientation="vertical">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/title_qrcode"
+                    android:text="@string/card_qrcode"
+                     android:textColor="#ff165ec0"
+                    android:textSize="16sp"/> 
+                    
+                <TextView android:id="@+id/title_sn"
+                    android:layout_width="wrap_content"
+                    android:layout_below="@+id/title_qrcode"
+                    android:layout_marginLeft="35dip"
+                    android:layout_marginTop="15dip"
+                    android:layout_alignBottom="@+id/sn"
+                    android:layout_height="wrap_content"
+                    android:text="@string/card_xinghao"
+                     android:textColor="#ff5a5a5a"
+                    android:textSize="16sp"/> 
+                <EditText android:id="@+id/sn"
+                    android:layout_toRightOf="@+id/title_sn"
+                    android:layout_toLeftOf="@+id/button_scan_sn"
+                    android:layout_marginLeft="6dip"
+                    android:layout_marginTop="15dip"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:minWidth="150dip"/>
+                
+                <ImageView android:id="@+id/button_scan_sn"
+                    android:layout_width="wrap_content"
+                    android:layout_below="@+id/title_qrcode"
+                    android:layout_alignBottom="@+id/sn"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="35dip"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_scan_sn"/> 
+                
+            </RelativeLayout>
+			
+		    <View
+		        android:layout_width="fill_parent"
+		        android:layout_height="1dip"
+		        android:background="#ff165ec0"/>
+            <Button
+                android:id="@+id/button_save"
+                android:layout_width="95dip"
+                android:layout_height="36dip"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="60dip"
+                android:background="@drawable/default_blue_btn"
+                android:gravity="center"
+                android:text="@string/button_register_confirm"
+                android:textColor="#ffffffff"
+                android:layout_marginTop="20dip"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -28,6 +28,11 @@ public class ConversationItemObject implements InfoInterface{
 	public long mServiceDate;
 	/**信息当前状态，如发送中0，发送成功1*/
 	public int mMessageStatus = 0;
+	/**是否已经看过，0表示未读，1表示已读*/
+	public int mSeen = 0;
+	
+	public static final int SEEN = 1;
+	public static final int UN_SEEN = 0;
 	
 	public static final String[] ID_PROJECTION = new String[]{
 		HaierDBHelper.ID,              //0
@@ -41,6 +46,10 @@ public class ConversationItemObject implements InfoInterface{
 		return mId > -1;
 	}
 	
+	public void setReadStatus(int seen) {
+		mSeen = seen;
+	}
+	
 	@Override
 	public boolean saveInDatebase(ContentResolver cr, ContentValues addtion) {
 		ContentValues values = new ContentValues();
@@ -50,6 +59,7 @@ public class ConversationItemObject implements InfoInterface{
 		values.put(HaierDBHelper.IM_SERVICE_ID, mServiceId);
 		values.put(HaierDBHelper.IM_TARGET_TYPE, mTargetType);
 		values.put(HaierDBHelper.IM_SERVICE_TIME, mServiceDate);
+		values.put(HaierDBHelper.IM_SEEN, mSeen);
 		if (addtion != null) {
 			values.putAll(addtion);
 		}
@@ -88,7 +98,12 @@ public class ConversationItemObject implements InfoInterface{
 			return data != null;
 		}
 	}
-	
+	/**
+	 * 通常我们发出一条消息的时候会调用该方法
+	 * @param cr
+	 * @param addtion
+	 * @return
+	 */
 	public boolean saveInDatebaseWithoutCheckExisted(ContentResolver cr, ContentValues addtion) {
 		ContentValues values = new ContentValues();
 		values.put(HaierDBHelper.IM_UNAME, mUName);
@@ -97,6 +112,7 @@ public class ConversationItemObject implements InfoInterface{
 		values.put(HaierDBHelper.IM_SERVICE_ID, mServiceId);
 		values.put(HaierDBHelper.IM_TARGET_TYPE, mTargetType);
 		values.put(HaierDBHelper.IM_SERVICE_TIME, mServiceDate);
+		values.put(HaierDBHelper.IM_SEEN, mSeen);
 		if (addtion != null) {
 			values.putAll(addtion);
 		}
@@ -118,13 +134,14 @@ public class ConversationItemObject implements InfoInterface{
 		}
 		return mId > -1;
 	}
-	
+	/**主要是用来更新自己发送的消息*/
 	public boolean updateInDatebase(ContentResolver cr, ContentValues addtion) {
 		ContentValues values = new ContentValues();
 		values.put(HaierDBHelper.DATE, new Date().getTime());
 		values.put(HaierDBHelper.IM_MESSAGE_STATUS, mMessageStatus);
 		values.put(HaierDBHelper.IM_SERVICE_ID, mServiceId);
 		values.put(HaierDBHelper.IM_SERVICE_TIME, mServiceDate);
+		values.put(HaierDBHelper.IM_SEEN, mSeen);
 		if (addtion != null) {
 			values.putAll(addtion);
 		}

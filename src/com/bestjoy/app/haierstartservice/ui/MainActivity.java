@@ -6,37 +6,25 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.bestjoy.app.haierstartservice.MyApplication;
 import com.bestjoy.app.haierstartservice.R;
 import com.bestjoy.app.haierstartservice.account.MyAccountManager;
+import com.bestjoy.app.haierstartservice.im.IMHelper;
 import com.bestjoy.app.haierstartservice.service.IMService;
 import com.bestjoy.app.haierstartservice.update.UpdateService;
-import com.bestjoy.app.haierstartservice.view.ModuleView;
 import com.bestjoy.app.haierstartservice.view.ModuleViewUtils;
-import com.bestjoy.app.utils.BitmapUtils;
+import com.bestjoy.app.utils.MenuHandlerUtils;
 import com.bestjoy.app.utils.YouMengMessageHelper;
 import com.shwy.bestjoy.utils.AsyncTaskUtils;
 import com.shwy.bestjoy.utils.FilesUtils;
 
-public class MainActivity extends BaseActionbarActivity {
+public class MainActivity extends BaseNoActionBarActivity {
 	
 	private Handler mHandler;
 
@@ -44,9 +32,6 @@ public class MainActivity extends BaseActionbarActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mHandler = new Handler();
-		getSupportActionBar().setDisplayShowHomeEnabled(false);
-		getSupportActionBar().setDisplayShowTitleEnabled(true);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		setContentView(R.layout.activity_main_20140913);
 		ModuleViewUtils.getInstance().initModules(this);
 		
@@ -73,49 +58,58 @@ public class MainActivity extends BaseActionbarActivity {
 	
 	 @Override
      public boolean onCreateOptionsMenu(Menu menu) {
-  	     boolean result = super.onCreateOptionsMenu(menu);
-  	     MenuItem subMenu1Item = menu.findItem(R.string.menu_more);
-  	     subMenu1Item.getSubMenu().add(1000, R.string.menu_refresh, 1005, R.string.menu_refresh);
-  	     subMenu1Item.getSubMenu().add(1000, R.string.menu_exit, 1006, R.string.menu_exit);
-  	     subMenu1Item.setIcon(R.drawable.ic_menu_moreoverflow);
-         return result;
+		 MenuHandlerUtils.onCreateOptionsMenu(menu);
+		 return super.onCreateOptionsMenu(menu);
      }
 	 
 	 public boolean onPrepareOptionsMenu(Menu menu) {
-		 menu.findItem(R.string.menu_exit).setVisible(MyAccountManager.getInstance().hasLoginned());
-		 menu.findItem(R.string.menu_refresh).setVisible(MyAccountManager.getInstance().hasLoginned());
+		 MenuItem item = menu.findItem(R.string.menu_exit);
+		if (item != null) {
+			item.setVisible(MyAccountManager.getInstance().hasLoginned());
+		}
+		item = menu.findItem(R.string.menu_refresh);
+		if (item != null) {
+			item.setVisible(MyAccountManager.getInstance().hasLoginned());
+		}
+		
+		item = menu.findItem(R.string.menu_setting);
+		if (item != null) {
+			item.setVisible(MyAccountManager.getInstance().hasLoginned());
+		}
 	     return super.onPrepareOptionsMenu(menu);
 	 }
 	 
 	 @Override
 	 public boolean onOptionsItemSelected(MenuItem menuItem) {
-		 switch(menuItem.getItemId()) {
-		 case R.string.menu_exit:
-			 new AlertDialog.Builder(mContext)
-				.setMessage(R.string.msg_existing_system_confirm)
-				.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-					
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						deleteAccountAsync();
-					}
-				})
-				.setNegativeButton(android.R.string.cancel, null)
-				.show();
-			 return true;
-		 case R.string.menu_refresh:
-			 if (MyAccountManager.getInstance().hasLoginned()) {
-				 //做一次登陆操作
-				 //目前只删除本地的所有缓存文件
-				 File dir = MyApplication.getInstance().getCachedXinghaoInternalRoot();
-				 FilesUtils.deleteFile("Updating ", dir);
-				 
-				 dir = MyApplication.getInstance().getCachedXinghaoExternalRoot();
-				 if (dir != null) {
+		 if (!MenuHandlerUtils.onOptionsItemSelected(menuItem, mContext)) {
+			 switch(menuItem.getItemId()) {
+			 case R.string.menu_exit:
+				 new AlertDialog.Builder(mContext)
+					.setMessage(R.string.msg_existing_system_confirm)
+					.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							deleteAccountAsync();
+						}
+					})
+					.setNegativeButton(android.R.string.cancel, null)
+					.show();
+				 return true;
+			 case R.string.menu_refresh:
+				 if (MyAccountManager.getInstance().hasLoginned()) {
+					 //做一次登陆操作
+					 //目前只删除本地的所有缓存文件
+					 File dir = MyApplication.getInstance().getCachedXinghaoInternalRoot();
 					 FilesUtils.deleteFile("Updating ", dir);
+					 
+					 dir = MyApplication.getInstance().getCachedXinghaoExternalRoot();
+					 if (dir != null) {
+						 FilesUtils.deleteFile("Updating ", dir);
+					 }
 				 }
+				 break;
 			 }
-			 break;
 		 }
 		 return super.onOptionsItemSelected(menuItem);
 	 }
@@ -132,6 +126,8 @@ public class MainActivity extends BaseActionbarActivity {
 		@Override
 		protected Void doInBackground(Void... params) {
 			IMService.disconnectIMService(mContext, MyAccountManager.getInstance().getAccountObject());
+			//删除所有的账户相关的即时通信信息
+			IMHelper.deleteAllMessages(getContentResolver(), MyAccountManager.getInstance().getCurrentAccountId());
 			MyAccountManager.getInstance().deleteDefaultAccount();
 			MyAccountManager.getInstance().saveLastUsrTel("");
 			return null;

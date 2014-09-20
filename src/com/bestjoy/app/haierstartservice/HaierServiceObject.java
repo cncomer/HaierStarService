@@ -340,6 +340,38 @@ public class HaierServiceObject {
 		  return sb.toString();
 	  }
 	  
-	 
+	  /**
+	   * http://115.29.231.29/Haier/Start/GetMessageByUIDByTID.ashx?UID=607421&TID=42300&type=p2p
+	   * @param uid
+	   * @param target
+	   * @return
+	   */
+	  public static String getMessagesUrlByUidByTid(String uid, String target, String targetType) {
+		  UrlEncodeStringBuilder sb = new UrlEncodeStringBuilder(SERVICE_URL);
+		  sb.append("Start/GetMessageByUIDByTID.ashx?uid=").append(uid).append("&TID=").append(target).append("&type=").append(targetType);
+		  return sb.toString();
+	  }
+	  public static String getMessagesUrlByUidByTid(String uid, String target, int targetType) {
+		  UrlEncodeStringBuilder sb = new UrlEncodeStringBuilder(SERVICE_URL);
+		  sb.append("Start/GetMessageByUIDByTID.ashx?uid=").append(uid).append("&TID=").append(target).append("&type=").append(targetType);
+		  return sb.toString();
+	  }
 	  
+	  /***
+	   * 获取指定MM的头像
+	   * @param mm
+	   * @return
+	   */
+	  public static String getRelationshipAvatorUrl(String mm) {
+		  UrlEncodeStringBuilder sb = new UrlEncodeStringBuilder("http://115.29.231.29/userimg/");
+		  sb.append(mm).append(".jpg");
+		  return sb.toString();
+	  }
+	  
+	  
+	  public static String createUserBaoxiucardUrl() {
+		  StringBuilder sb = new StringBuilder(SERVICE_URL);
+			sb.append("Start/ServiceAddBaoXiu.ashx");
+		 return sb.toString();
+	  }
 }
