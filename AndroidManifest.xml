@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bestjoy.app.haierstartservice"
-    android:versionCode="2"
-    android:versionName="V1.1" >
+    android:versionCode="3"
+    android:versionName="V1.2" >
 
      <supports-screens
         android:anyDensity="true"
