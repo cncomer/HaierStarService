@@ -57,8 +57,13 @@ public class MainActivity extends BaseNoActionBarActivity {
 	}
 	
 	 @Override
-     public boolean onCreateOptionsMenu(Menu menu) {
+     public boolean onCreateTitleBarOptionsMenu(Menu menu) {
 		 MenuHandlerUtils.onCreateOptionsMenu(menu);
+		 return true;
+     }
+	 
+	 @Override
+     public boolean onCreateOptionsMenu(Menu menu) {
 		 return super.onCreateOptionsMenu(menu);
      }
 	 

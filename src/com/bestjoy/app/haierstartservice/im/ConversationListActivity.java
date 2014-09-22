@@ -368,7 +368,9 @@ public class ConversationListActivity extends LoadMoreWithPageActivity implement
 			DebugUtils.logD(TAG, "doVoiceQuery() query=" + query);
 			mInputEdit.getText().clear();
 			mInputEdit.append(query);
-			sendMessageLocked();
+			//这里是语音识别后进入文本编写界面以便用户修改输入内容
+			updateEditLayout(true);
+//			sendMessageLocked();
 			
 		}
 	

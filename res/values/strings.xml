@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">星服务</string>
-    <string name="app_name_2014">星服务 2014</string>
+    <string name="app_name">在线服务平台</string>
+    <string name="app_name_2014">在线服务平台 2014</string>
     <string name="app_id">541aafb6</string>
     <string name="button_register">新用户注册</string>
      <string name="button_find_password">找回密码</string>
@@ -431,7 +431,7 @@
      <string name="msg_offline_confirm_click">你现在处于离线中，点击重新连接通讯服务器</string>
       <string name="title_my_product_deadline">距离质保结束</string>
       <string name="product_deadline">距离质保结束</string>
-      <string name="title_business">星商圈</string>
+      <string name="title_business">在线服务圈</string>
       <string name="button_create_account">创建星账户</string>
       
       <string name="msg_nonew_for_receive">数据已是最新</string>

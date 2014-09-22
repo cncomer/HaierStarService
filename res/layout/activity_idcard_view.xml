@@ -36,7 +36,7 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/baoxiuka_avator_default" />
 
-                <TextView
+                <EditText
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -198,6 +198,18 @@
             <View android:layout_width="fill_parent"
                 android:layout_height="1dip"
                 android:background="#ffcdcdcd"/>
+            
+            <Button
+                android:id="@+id/button_save"
+                android:layout_width="95dip"
+                android:layout_height="36dip"
+                android:textColor="#ffffffff"
+                android:layout_marginTop="20dip"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"
+                android:textSize="16sp"
+                android:background="@drawable/default_blue_btn"
+                android:text="@string/button_save"/>
         </LinearLayout>
     </ScrollView>
 

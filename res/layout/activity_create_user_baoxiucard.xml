@@ -114,6 +114,7 @@
 	                     android:layout_height="wrap_content"
 	                     android:textColor="#ff5a5a5a"
                     	android:textSize="16sp"
+                    	android:inputType="phone"
 	                    android:digits="@string/password_accept_chars" />
 	            </LinearLayout>
 	            

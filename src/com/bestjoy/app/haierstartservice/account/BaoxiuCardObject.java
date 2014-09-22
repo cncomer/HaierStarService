@@ -71,11 +71,11 @@ import com.shwy.bestjoy.utils.SecurityUtils;
 public class BaoxiuCardObject extends InfoInterfaceImpl {
 	public static final String JSONOBJECT_NAME = "baoxiu";
 	private static final String TAG = "BaoxiuCardObject";
-	public String mLeiXin;
-	public String mPinPai;
-	public String mXingHao;
-	public String mSHBianHao;
-	public String mBXPhone;
+	public String mLeiXin="";
+	public String mPinPai="";
+	public String mXingHao="";
+	public String mSHBianHao="";
+	public String mBXPhone="";
 	//modify by chenkai, 20140701, 将发票地址存进数据库（不再拼接），增加海尔奖励延保时间 begin
 	/**发票绝对路径，为了保证向后兼容之前的版本，之前版本使用mFPaddr=1表示有发票，拼接出网址，所以要保留该字段。
 	 * 现在不用再拼接了，后台会返回绝对路径，直接存储到mFPaddr字段中去,长度为1才表示有发票.
@@ -109,10 +109,10 @@ public class BaoxiuCardObject extends InfoInterfaceImpl {
 	public int mRewardStatus = 0;
 	 //add by chenkai, 锁定认证字段 20140701 end
 	
-	public String mMMOne, mMMOneTel,mMMOneName;
-	public String mMMTwo, mMMTwoTel,mMMTwoName;
+	public String mMMOne="", mMMOneTel,mMMOneName="";
+	public String mMMTwo="", mMMTwoTel,mMMTwoName="";
 	/**用来构建保修卡设备预览图，如mPKY.jpg*/
-	public String mPKY;
+	public String mPKY="";
 	
 	public static final String[] PROJECTION = new String[]{
 		HaierDBHelper.ID,
