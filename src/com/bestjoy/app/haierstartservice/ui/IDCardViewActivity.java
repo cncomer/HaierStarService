@@ -21,6 +21,7 @@ import com.bestjoy.app.haierstartservice.account.AccountObject;
 import com.bestjoy.app.haierstartservice.service.PhotoManagerUtilsV2;
 import com.bestjoy.app.haierstartservice.service.PhotoManagerUtilsV2.TaskType;
 import com.shwy.bestjoy.utils.AsyncTaskUtils;
+import com.shwy.bestjoy.utils.Contents;
 import com.shwy.bestjoy.utils.DebugUtils;
 import com.shwy.bestjoy.utils.Intents;
 import com.shwy.bestjoy.utils.QRGenerater;
@@ -102,7 +103,8 @@ public class IDCardViewActivity extends BaseNoActionBarActivity implements View.
 		
 		//"http://c.mingdown.com/mm"
 //		String format = QRGenerater.getContentFormat(QRGenerater.MECARD_CONTENT_FORMAT);
-		QRGenerater qRGenerater = new QRGenerater("http://c.mingdown.com/" + mAccountObject.mAccountMm);
+		String format = "MECARD:URL:%s;;";
+		QRGenerater qRGenerater = new QRGenerater(String.format(format, Contents.MingDang.buildDirectCloudUri(mAccountObject.mAccountMm)));
 		int size = getResources().getDimensionPixelSize(R.dimen.mypreview_qr_image_view_size);
 		qRGenerater.setDimens(size, size);
 		qRGenerater.setQRGeneratorFinishListener(new QRGeneratorFinishListener() {
