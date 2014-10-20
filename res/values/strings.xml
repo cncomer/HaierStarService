@@ -73,6 +73,9 @@
        <string name="usr_pwd_hint">输入你的密码</string>
        <string name="usr_repwd_hint">请再次输入你的密码</string>
        <string name="usr_tel_hint">输入你的手机号</string>
+       <string name="usr_title_hint">输入你的职务</string>
+       <string name="usr_org_hint">输入你的所属店名</string>
+       <string name="usr_workplace_hint">请输入地址</string>
     
     <string name="activity_title_choose_device_general">我的保修卡</string>
     <string name="activity_title_repair">预约维修</string>
@@ -466,4 +469,18 @@
       
       <string name="format_fapiao_date">"发票日期: %s"</string>
       
+      <string name="im_resend">重新发送</string>
+      <string name="im_send_cancel">删除</string>
+      <string name="msg_sending_failed">发送失败</string>
+      
+      <string name="sort_by_time">时间排序</string>
+      <string name="sort_by_type">类别排序</string>
+      <string name="button_qun_send">群发</string>
+      <string name="button_select_all">全选</string>
+      <string name="button_unselect_all">重选</string>
+      <string name="title_tip_input_content_for_qunfa">请输入您要群发的内容</string>
+      <string name="msg_offline_no_network">请检查网络并稍后重试</string>
+      <string name="msg_no_receiver">请至少选择一个接收者</string>
+      <string name="format_send_to_some">"发送给:%1$s(共%2$s人)"</string>
+      <string name="format_send_to_many">发送给:%1$s...(共%2$s人)</string>
 </resources>

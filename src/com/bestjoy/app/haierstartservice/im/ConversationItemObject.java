@@ -8,6 +8,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 
+import com.bestjoy.app.haierstartservice.account.MyAccountManager;
 import com.bestjoy.app.haierstartservice.database.BjnoteContent;
 import com.bestjoy.app.haierstartservice.database.HaierDBHelper;
 import com.shwy.bestjoy.utils.DebugUtils;
@@ -26,6 +27,7 @@ public class ConversationItemObject implements InfoInterface{
 	public String mUid, mPwd, mUName, mMessage;
 	/**信息服务器时间*/
 	public long mServiceDate;
+	public long mLocalCreateDate;
 	/**信息当前状态，如发送中0，发送成功1*/
 	public int mMessageStatus = 0;
 	/**是否已经看过，0表示未读，1表示已读*/
@@ -45,9 +47,41 @@ public class ConversationItemObject implements InfoInterface{
 	public boolean hasId() {
 		return mId > -1;
 	}
-	
 	public void setReadStatus(int seen) {
 		mSeen = seen;
+	}
+	
+	public static ConversationItemObject getConversationItemObjectFromCursor(Cursor c) {
+		ConversationItemObject conversationItemObject = new ConversationItemObject();
+		conversationItemObject.mId = c.getLong(IMHelper.INDEX_ID);
+		conversationItemObject.mMessage = c.getString(IMHelper.INDEX_TEXT);
+		conversationItemObject.mServiceId = c.getString(IMHelper.INDEX_SERVICE_ID);
+		conversationItemObject.mServiceDate = Long.valueOf(c.getString(IMHelper.INDEX_SERVICE_TIME));
+		conversationItemObject.mLocalCreateDate = Long.valueOf(c.getString(IMHelper.INDEX_LOCAL_TIME));
+		conversationItemObject.mMessageStatus = c.getInt(IMHelper.INDEX_STATUS);
+		conversationItemObject.mSeen = c.getInt(IMHelper.INDEX_SEEN);
+		
+		conversationItemObject.mUid = c.getString(IMHelper.INDEX_UID);
+		conversationItemObject.mUName = c.getString(IMHelper.INDEX_UNAME);
+		conversationItemObject.mPwd = MyAccountManager.getInstance().getAccountObject().mAccountPwd;
+		
+		conversationItemObject.mTarget = c.getString(IMHelper.INDEX_TARGET);
+		conversationItemObject.mTargetType = c.getInt(IMHelper.INDEX_TRAGET_TYPE);
+		return conversationItemObject;
+	}
+	
+	public boolean deleteMessage(ContentResolver cr) {
+		Uri url = null;
+		String where = IMHelper.UID_MESSAGEID_SELECTION;
+		String[] selectionArgs = new String[]{mUid, String.valueOf(mId)};
+		if (mTargetType == IMHelper.TARGET_TYPE_QUN) {
+			url = BjnoteContent.IM.CONTENT_URI_QUN;
+		} else if (mTargetType == IMHelper.TARGET_TYPE_P2P){
+			url = BjnoteContent.IM.CONTENT_URI_FRIEND;
+		}
+		int deleted =  BjnoteContent.delete(cr, url, where, selectionArgs);
+		DebugUtils.logD(TAG, "deleteMessage " + mMessage + ", deleted " + (deleted > 0));
+		return deleted > 0;
 	}
 	
 	@Override
@@ -107,7 +141,8 @@ public class ConversationItemObject implements InfoInterface{
 	public boolean saveInDatebaseWithoutCheckExisted(ContentResolver cr, ContentValues addtion) {
 		ContentValues values = new ContentValues();
 		values.put(HaierDBHelper.IM_UNAME, mUName);
-		values.put(HaierDBHelper.DATE, new Date().getTime());
+		mLocalCreateDate = new Date().getTime();
+		values.put(HaierDBHelper.DATE, mLocalCreateDate);
 		values.put(HaierDBHelper.IM_MESSAGE_STATUS, mMessageStatus);
 		values.put(HaierDBHelper.IM_SERVICE_ID, mServiceId);
 		values.put(HaierDBHelper.IM_TARGET_TYPE, mTargetType);
@@ -134,7 +169,7 @@ public class ConversationItemObject implements InfoInterface{
 		}
 		return mId > -1;
 	}
-	/**主要是用来更新自己发送的消息*/
+	
 	public boolean updateInDatebase(ContentResolver cr, ContentValues addtion) {
 		ContentValues values = new ContentValues();
 		values.put(HaierDBHelper.DATE, new Date().getTime());

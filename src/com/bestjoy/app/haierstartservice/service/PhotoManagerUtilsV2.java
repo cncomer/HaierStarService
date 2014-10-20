@@ -94,6 +94,11 @@ public class PhotoManagerUtilsV2 {
         	DebugUtils.logPhotoUtils(TAG, " remove bitmap from BitmapCache for photoId " + sPhotoId);
         }
     }
+    
+    public static boolean removeBitmapFromCache(String photoId) {
+    	sHardBitmapCache.remove(photoId);
+    	return true;
+    }
  
     public static Bitmap getBitmapFromCache(String photoId, TaskType type) {
         if (photoId == null) {

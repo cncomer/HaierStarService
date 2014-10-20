@@ -217,8 +217,13 @@ public abstract class PullToRefreshListPageActivity extends BaseNoActionBarActiv
 		PushAgent.getInstance(mContext).onAppStart();
 		PowerManager pm = (PowerManager) this.getSystemService(Context.POWER_SERVICE);
 		mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
-		loadLocalDataAsync();
 		
+	}
+	
+	@Override
+	public void onStart() {
+		super.onStart();
+		loadLocalDataAsync();
 	}
 	@Override
 	public void onResume() {
@@ -240,6 +245,18 @@ public abstract class PullToRefreshListPageActivity extends BaseNoActionBarActiv
 		long resumTime = System.currentTimeMillis();
 		return resumTime - mLastRefreshTime > MAX_REFRESH_TIME;
 	}
+	
+//	private void loadMore() {
+//		if(mIsAtListBottom && !mIsUpdate) {
+//			DebugUtils.logExchangeBC(TAG, "we go to load more.");
+//			if (isNeedRequestAgain) {
+//				updateFooterView(true, null);
+//				new QueryServiceTask().execute();
+//			} else {
+//				DebugUtils.logExchangeBC(TAG, "isNeedRequestAgain is false, we not need to load more");
+//			}
+//		}
+//	}
 	
 	public void forceRefresh() {
 		//手动刷新一次

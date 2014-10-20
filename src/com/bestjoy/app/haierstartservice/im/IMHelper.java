@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.net.Uri;
 import android.text.TextUtils;
 
 import com.bestjoy.app.haierstartservice.HaierServiceObject.HaierResultObject;
@@ -66,6 +67,7 @@ public class IMHelper {
 		HaierDBHelper.IM_SERVICE_TIME,  //7
 		HaierDBHelper.DATE,             //8
 		HaierDBHelper.IM_MESSAGE_STATUS,//9
+		HaierDBHelper.IM_SEEN,         //10
 	};
 	
 	public static final int INDEX_ID = 0;
@@ -78,6 +80,7 @@ public class IMHelper {
 	public static final int INDEX_SERVICE_TIME = 7;
 	public static final int INDEX_LOCAL_TIME = 8;
 	public static final int INDEX_STATUS = 9;
+	public static final int INDEX_SEEN = 10;
 	/**按照消息的服务器id升序排序*/
 	public static final String SORT_BY_MESSAGE_ID = HaierDBHelper.IM_SERVICE_TIME + " asc";
 	
@@ -85,7 +88,7 @@ public class IMHelper {
 	public static final String QUN_SELECTION = HaierDBHelper.IM_TARGET_TYPE + "=? and " + HaierDBHelper.IM_TARGET + "=?";
 	public static final String UID_SELECTION = HaierDBHelper.IM_UID + "=?";
 	public static final String FRIEND_SELECTION = HaierDBHelper.IM_UID + "=? and " + HaierDBHelper.IM_TARGET + "=?";
-	
+	public static final String UID_MESSAGEID_SELECTION = UID_SELECTION + " and " + HaierDBHelper.ID + "=?";
 	public static final String SERVICEID_QUN_SELECTION = HaierDBHelper.IM_SERVICE_ID + "=? and " + QUN_SELECTION;
 	public static final String SERVICEID_FRIEND_SELECTION = HaierDBHelper.IM_SERVICE_ID + "=? and " + FRIEND_SELECTION;
 	
@@ -93,7 +96,6 @@ public class IMHelper {
 	
 	public static  DateFormat SERVICE_DATE_TIME_FORMAT = new SimpleDateFormat("yyyyMMddHHmmss");
 	public static  DateFormat LOCAL_DATE_TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	
 	/**
 	 * 会话开始前，我们需要先登录IM服务器
 	 * @param uid
@@ -179,8 +181,14 @@ public class IMHelper {
 	 * @param selectionArgs
 	 * @return
 	 */
-	public static int update(ContentResolver cr, ContentValues values, String where, String[] selectionArgs) {
-		return cr.update(BjnoteContent.IM.CONTENT_URI, values, where, selectionArgs);
+	public static int update(ContentResolver cr, int targetType, ContentValues values, String where, String[] selectionArgs) {
+		Uri uri = null;
+		if (targetType == IMHelper.TARGET_TYPE_QUN) {
+			uri = BjnoteContent.IM.CONTENT_URI_QUN;
+		} else if (targetType == IMHelper.TARGET_TYPE_P2P) {
+			uri = BjnoteContent.IM.CONTENT_URI_FRIEND;
+		}
+		return cr.update(uri, values, where, selectionArgs);
 	}
 	
 	public static void deleteAllMessages(ContentResolver cr, long uid) {
@@ -214,7 +222,17 @@ public class IMHelper {
 		return null;
 		
 	}
-	
+	public static int saveList(ContentResolver cr, List<? extends InfoInterface> infoObjects) {
+		int insertOrUpdateCount = 0;
+		if (infoObjects != null) {
+			for(InfoInterface object:infoObjects) {
+				if (object.saveInDatebase(cr, null)) {
+					insertOrUpdateCount++;
+				}
+			}
+		}
+		return insertOrUpdateCount;
+	}
 	public static List<ConversationItemObject> parseList(InputStream is, PageInfo pageInfo, int targetType) {
 		HaierResultObject serviceResultObject = HaierResultObject.parse(NetworkUtils.getContentFromInput(is));
 		List<ConversationItemObject> list = new ArrayList<ConversationItemObject>();
@@ -254,17 +272,7 @@ public class IMHelper {
 		return list;
 		
 	}
-	public static int saveList(ContentResolver cr, List<? extends InfoInterface> infoObjects) {
-		int insertOrUpdateCount = 0;
-		if (infoObjects != null) {
-			for(InfoInterface object:infoObjects) {
-				if (object.saveInDatebase(cr, null)) {
-					insertOrUpdateCount++;
-				}
-			}
-		}
-		return insertOrUpdateCount;
-	}
+	
 	
 	public static class ImServiceResultObject {
 		public int mStatusCode = 0;

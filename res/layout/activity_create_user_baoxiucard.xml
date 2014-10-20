@@ -141,7 +141,7 @@
                 <ImageView android:id="@+id/button_scan_bill"
                     android:layout_marginTop="5dip"
                     android:layout_gravity="center"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_scan_bill"
                     android:layout_width="140dip"
                     android:layout_height="100dip"

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/wt"
+    android:padding="20dip"
+    android:orientation="vertical" >
+
+    <TextView android:id="@+id/sendto"
+        android:layout_width="fill_parent"
+        android:text="sdadssjadsa"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/feedback"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gray_boder_white_input"
+        android:layout_marginTop="6dip"
+        android:minLines="4"         
+        android:gravity="top"
+        android:textColor="@color/blk"
+        android:textSize="16sp" />
+    
+    <LinearLayout android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="6dip"
+        android:gravity="center">
+        
+        <Button android:id="@+id/button_cancel"
+	        android:layout_width="60dip"
+	        android:text="@android:string/cancel"
+	        style="@style/DefaultShapeButton"
+	        android:textSize="12sp"
+	        android:textColor="@color/wt"
+	        android:layout_gravity="center_horizontal"
+	        android:background="@drawable/default_blue_btn"
+	        android:layout_height="30dip"/>
+        
+        <Button android:id="@+id/button_commit"
+	        android:layout_width="60dip"
+	        android:text="@android:string/ok"
+	        style="@style/DefaultShapeButton"
+	        android:textSize="12sp"
+	        android:textColor="@color/wt"
+	        android:layout_gravity="center_horizontal"
+	        android:background="@drawable/default_blue_btn"
+	        android:layout_marginLeft="10dip"
+	        android:layout_height="30dip"/>
+    </LinearLayout>
+    
+
+</LinearLayout>

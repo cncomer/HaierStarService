@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="45dip"
+    android:background="#ff1f68ba"
+    android:orientation="horizontal"
+    android:gravity="center" >
+    
+    <Button android:id="@+id/time"
+        android:layout_height="26dip"
+        android:text="@string/sort_by_time"
+        android:background="@drawable/sort_btn_selected"
+        android:textSize="15sp"
+        android:textColor="@color/sort_text_color_selected"
+        android:layout_width="71dip"/>
+	<Button android:id="@+id/type"
+        android:layout_height="26dip"
+        android:text="@string/sort_by_type"
+         android:background="@drawable/sort_btn_unselected"
+         android:textSize="15sp"
+         android:textColor="@color/sort_text_color_unselected"
+        android:layout_width="71dip"/>
+</LinearLayout>

@@ -69,4 +69,9 @@
 		<item>@string/two_year</item>
 		<item>@string/three_year</item>
 	</string-array>
+	
+	<string-array name="im_resend_items">
+		<item>@string/im_resend</item>
+		<item>@string/im_send_cancel</item>
+	</string-array>
 </resources>

@@ -7,10 +7,12 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
+import java.util.Date;
 
 import android.app.AlertDialog;
 import android.app.Service;
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,8 +29,10 @@ import com.bestjoy.app.haierstartservice.MyApplication;
 import com.bestjoy.app.haierstartservice.R;
 import com.bestjoy.app.haierstartservice.account.AccountObject;
 import com.bestjoy.app.haierstartservice.account.MyAccountManager;
+import com.bestjoy.app.haierstartservice.database.HaierDBHelper;
 import com.bestjoy.app.haierstartservice.im.ConversationItemObject;
 import com.bestjoy.app.haierstartservice.im.IMHelper;
+import com.shwy.bestjoy.utils.ComConnectivityManager;
 import com.shwy.bestjoy.utils.DebugUtils;
 import com.shwy.bestjoy.utils.Intents;
 import com.shwy.bestjoy.utils.NotifyRegistrant;
@@ -54,12 +58,15 @@ public class IMService extends Service{
 	public static final int WHAT_SEND_MESSAGE_EXIT = 1002;
 	/**收到用户已离线的消息*/
 	public static final int WHAT_SEND_MESSAGE_OFFLINE = 1003;
+	/**无网络*/
+	public static final int WHAT_SEND_MESSAGE_NO_NETWORK = 1008;
 	/**收到用户验证失败的消息*/
 	public static final int WHAT_SEND_MESSAGE_INVALID_USER = 1004;
 	/**30s*/
 	private static final int HEART_BEAT_DELAY_TIME = 30 * 1000;
 	/**在会话结束前，我们需要等待，比如退出当前界面*/
 	private boolean mIsConnected = false;
+	private boolean mIsRecLoginRes = false;
 	/**会话中信息不会显示成Notification*/
 	private boolean mIsInConversationSession = false;
 	private String mConversationSessionTarget = "";
@@ -68,6 +75,9 @@ public class IMService extends Service{
 	WifiManager.MulticastLock mMulticastLock;
 	private Handler mUiHandler;
 	
+	private static final int WHAT_CHECK_SENDING_MESSAGE = 10;
+	public static final int WHAT_CHECK_HEART_BEAT = 11;
+	private static final int CHECK_HEART_BEAT_DELAY = 10 *1000; //10秒中如果没有检查到心跳包，就认为是和服务器暂时无法连接
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -92,9 +102,25 @@ public class IMService extends Service{
 			public void handleMessage(Message msg) {
 				super.handleMessage(msg);
 				switch(msg.what) {
+				case WHAT_CHECK_SENDING_MESSAGE:
+					//检查发送时间大于10秒的信息，标记为发送失败
+					ContentValues values = new ContentValues();
+					values.put(HaierDBHelper.IM_MESSAGE_STATUS, 2);
+					int updated = IMHelper.update(mContentResolver, IMHelper.TARGET_TYPE_P2P, values, "(?-" + HaierDBHelper.DATE + ">"+ CHECK_HEART_BEAT_DELAY+") and " + HaierDBHelper.IM_MESSAGE_STATUS +"=0", new String[]{String.valueOf(new Date().getTime())});
+					DebugUtils.logD(TAG, "WHAT_CHECK_SENDING_MESSAGE update unsended message to failed, affected rows#" + updated);
+					break;
+				case WHAT_CHECK_HEART_BEAT:
+					//如果10秒钟没有接收到登录应答，我们认为连接丢失，等待重新连接
+					mIsConnected = false;
+					//通知连接结果
+					NotifyRegistrant.getInstance().notify(WHAT_SEND_MESSAGE_NO_NETWORK);
+					break;
 				case WHAT_SEND_MESSAGE_LOGIN:
+					
+					mIsRecLoginRes = false;
 					AccountObject accountObject = MyAccountManager.getInstance().getAccountObject();
 					if (accountObject == null) {
+						DebugUtils.logD(TAG, "receiveMessageLocked ignore due to  accountObject == null");
 						return;
 					}
 					NotifyRegistrant.getInstance().notify(WHAT_SEND_MESSAGE_LOGIN);
@@ -103,7 +129,10 @@ public class IMService extends Service{
 						sendMessageLocked(IMHelper.createOrJoinConversation(String.valueOf(accountObject.mAccountUid), accountObject.mAccountPwd, accountObject.mAccountName).toString().getBytes("UTF-8"));
 						//心跳检测
 				 		mWorkHandler.sendEmptyMessageDelayed(WHAT_SEND_MESSAGE_LOGIN, HEART_BEAT_DELAY_TIME);
+				 		mWorkHandler.sendEmptyMessageDelayed(WHAT_CHECK_HEART_BEAT, CHECK_HEART_BEAT_DELAY);
 					} catch (UnsupportedEncodingException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
 						e.printStackTrace();
 					}
 					break;
@@ -113,17 +142,23 @@ public class IMService extends Service{
 						sendMessageLocked(IMHelper.exitConversation(message.mUid, message.mPwd, message.mUName).toString().getBytes("UTF-8"));
 					} catch (UnsupportedEncodingException e) {
 						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
 					}
 					break;
 				case WHAT_SEND_MESSAGE:
+					ConversationItemObject message = (ConversationItemObject) msg.obj;
 					try {
 						//在发送消息的时候，我们先在本地新增一条发送中的数据
-						ConversationItemObject message = (ConversationItemObject) msg.obj;
-						message.setReadStatus(ConversationItemObject.SEEN);
 						message.saveInDatebaseWithoutCheckExisted(mContentResolver, null);
 						sendMessageLocked(IMHelper.createMessageConversation(message).toString().getBytes("UTF-8"));
+						mWorkHandler.sendEmptyMessageDelayed(WHAT_CHECK_SENDING_MESSAGE, CHECK_HEART_BEAT_DELAY);
 					} catch (UnsupportedEncodingException e) {
 						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+						message.mMessageStatus = 2;
+						message.updateInDatebase(mContentResolver, null);
 					}
 					break;
 				
@@ -142,6 +177,23 @@ public class IMService extends Service{
 			mCoversationReceiveServerThread = new CoversationReceiveServerThread();
 			mCoversationReceiveServerThread.start();
 		}
+		
+		//启动一个计时器来定时检查发送状态
+		mWorkHandler.sendEmptyMessageDelayed(WHAT_CHECK_SENDING_MESSAGE, CHECK_HEART_BEAT_DELAY);
+		
+		ComConnectivityManager.getInstance().addConnCallback(new ComConnectivityManager.ConnCallback() {
+			
+			@Override
+			public void onConnChanged(ComConnectivityManager cm) {
+				if (cm.isConnected()) {
+					//如果网络变化了，我们立即重新发送心跳包
+					mWorkHandler.sendEmptyMessageDelayed(WHAT_SEND_MESSAGE_LOGIN, 500);//立即登录一次
+				} else {
+					mIsConnected = false;
+					NotifyRegistrant.getInstance().notify(WHAT_SEND_MESSAGE_NO_NETWORK);
+				}
+			}
+		});
 	}
 
 	
@@ -270,15 +322,11 @@ public class IMService extends Service{
         }
     }
     
-	private void sendMessageLocked(final byte[] data) {
+	private void sendMessageLocked(final byte[] data) throws IOException {
 		DebugUtils.logD(TAG, "sendMessageLocked data.length " + data.length);
 		if(data.length!=0 && mSocket != null){
-			try{
-				DatagramPacket dp=new DatagramPacket(data, data.length, InetAddress.getByName(HOST), PORT);
-				mSocket.send(dp);
-			}catch(Exception e){
-				e.printStackTrace();
-			}
+			DatagramPacket dp=new DatagramPacket(data, data.length, InetAddress.getByName(HOST), PORT);
+			mSocket.send(dp);
 		}
 	}
 	
@@ -297,10 +345,13 @@ public class IMService extends Service{
 				switch(type){
 				case IMHelper.TYPE_LOGIN: //登录成功
 					mIsConnected = true;
+					mIsRecLoginRes = true;
+					mWorkHandler.removeMessages(WHAT_CHECK_HEART_BEAT);
 					NotifyRegistrant.getInstance().notify(WHAT_SEND_MESSAGE_LOGIN);
 					break;
 				case IMHelper.TYPE_EXIT: //退出登录成功
 					mIsConnected = false;
+					setIsInConversationSession(false, "");
 					NotifyRegistrant.getInstance().notify(WHAT_SEND_MESSAGE_EXIT);
 					break;
 				case IMHelper.TYPE_MESSAGE: //我发送的消息得到了返回
@@ -315,7 +366,6 @@ public class IMService extends Service{
 							if (conversationItemObject.mUid.equals(MyAccountManager.getInstance().getCurrentAccountUid())) {
 								//服务器返回了我们之前发送的信息，表明该条消息发送成功，我们更新本地信息的发送状态
 								conversationItemObject.mMessageStatus = 1;
-								conversationItemObject.setReadStatus(ConversationItemObject.SEEN);
 								conversationItemObject.updateInDatebase(mContentResolver, null);
 							}
 						} else if (IMHelper.TYPE_MESSAGE_FORWARD == type) {
@@ -336,11 +386,10 @@ public class IMService extends Service{
 								conversationItemObject.setReadStatus(ConversationItemObject.UN_SEEN);
 								DebugUtils.logD(TAG, "mark unseen " + conversationItemObject.mMessage);
 							}
-							
 							conversationItemObject.saveInDatebase(mContentResolver, null);
 						}
 						if (!mIsInConversationSession) {
-//							MyApplication.getInstance().showMessageAsync("Rec message " + conversationItemObject.mMessage);
+							//MyApplication.getInstance().showMessageAsync("Rec message " + conversationItemObject.mMessage);
 						}
 					}
 					break;
@@ -350,6 +399,7 @@ public class IMService extends Service{
 				switch(type){
 				case IMHelper.TYPE_LOGIN: //登录失败
 					mIsConnected = false;
+					mIsRecLoginRes = true;
 					mWorkHandler.removeMessages(WHAT_SEND_MESSAGE_LOGIN);
 					mUiHandler.sendEmptyMessage(WHAT_SEND_MESSAGE_OFFLINE);
 					NotifyRegistrant.getInstance().notify(WHAT_SEND_MESSAGE_OFFLINE);
@@ -417,7 +467,7 @@ public class IMService extends Service{
 		    	  if(mSocket == null){
 	  	  		    mSocket = new DatagramSocket(null);
 	  	  		    mSocket.setReuseAddress(true);
-	  	  		    mSocket.bind(new InetSocketAddress(8904));
+	  	  		    mSocket.bind(new InetSocketAddress(8905)); //8904
 		  	     }
 		    	 DebugUtils.logD(TAG, "准备接受UDP");
 				byte[] buffer = new byte[BUFFER_LENGTH];

@@ -334,9 +334,9 @@ public class HaierServiceObject {
 	   * 获取suid的关系
 	   *  http://115.29.231.29/Haier/Start/GetServiceUserBaoXiu.ashx?suid=682038&pwd=844605
 	   */
-	  public static String getRelationshipUrl(String suid, String pwd) {
+	  public static String getRelationshipUrl(String suid, String pwd, int sortType) {
 		  UrlEncodeStringBuilder sb = new UrlEncodeStringBuilder(SERVICE_URL);
-		  sb.append("Start/GetServiceUserBaoXiu.ashx?suid=").append(suid).append("&pwd=").append(pwd);
+		  sb.append("Start/GetServiceUserBaoXiu.ashx?suid=").append(suid).append("&pwd=").append(pwd).append("&sort=").append(sortType);
 		  return sb.toString();
 	  }
 	  
@@ -373,5 +373,24 @@ public class HaierServiceObject {
 		  StringBuilder sb = new StringBuilder(SERVICE_URL);
 			sb.append("Start/ServiceAddBaoXiu.ashx");
 		 return sb.toString();
+	  }
+	  
+	  /**
+	   * http://115.29.231.29/Haier/start/updateVcfByMM.ashx
+	   * @param para
+	   * @param jsonString
+	   * @return
+	   */
+	  public static String getUpdateVcfUrlByMM(String para, String jsonString) {
+		  UrlEncodeStringBuilder sb = new UrlEncodeStringBuilder(SERVICE_URL);
+		  sb.append("start/updateVcfByMM.ashx?")
+		  .append(para).append("=").appendUrlEncodedString(jsonString);
+		  return sb.toString();
+	  }
+	  
+	  public static String getPostUpdateAvatorUrlByMM() {
+		  UrlEncodeStringBuilder sb = new UrlEncodeStringBuilder(SERVICE_URL);
+		  sb.append("start/changeimg.ashx?");
+		  return sb.toString();
 	  }
 }

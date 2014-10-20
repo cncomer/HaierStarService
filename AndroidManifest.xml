@@ -250,6 +250,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"
             android:label="@string/title_id_card_view" />
+         
         <!-- 消息推送代码开始 -->
          <receiver
              android:name="com.umeng.message.NotificationProxyBroadcastReceiver"

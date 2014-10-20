@@ -34,4 +34,7 @@
   <color name="result_points">#c000ff00</color>
   <color name="result_text">#ffffffff</color>
   <color name="result_view">#b0000000</color>
+  
+  <color name="sort_text_color_selected">#ff1f68ba</color>
+  <color name="sort_text_color_unselected">#ffefefef</color>
 </resources>
