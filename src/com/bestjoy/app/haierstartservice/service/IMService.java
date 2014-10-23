@@ -44,7 +44,7 @@ public class IMService extends Service{
 	private static final String ACTION_DISCONNECT_IM_SERVICE = "Action.disconnect";
 	//为了简单起见，所有的异常都直接往外抛  
     private static final String HOST = "115.29.231.29";//"192.168.1.149";//"115.29.231.29";  //要连接的服务端IP地址  
-    private static final int PORT = 1029;   //要连接的服务端对应的监听端口 
+    private static final int PORT = 1034;   //要连接的服务端对应的监听端口 
     private static final int BUFFER_LENGTH = 4 * 1024; //4k
     private CoversationReceiveServerThread mCoversationReceiveServerThread;
 	private DatagramSocket mSocket;
@@ -77,7 +77,7 @@ public class IMService extends Service{
 	
 	private static final int WHAT_CHECK_SENDING_MESSAGE = 10;
 	public static final int WHAT_CHECK_HEART_BEAT = 11;
-	private static final int CHECK_HEART_BEAT_DELAY = 10 *1000; //10秒中如果没有检查到心跳包，就认为是和服务器暂时无法连接
+	private static final int CHECK_HEART_BEAT_DELAY = 20 *1000; //10秒中如果没有检查到心跳包，就认为是和服务器暂时无法连接
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -361,6 +361,10 @@ public class IMService extends Service{
 						conversationItemObject.mUid = serviceResult.mUid;
 						conversationItemObject.mUName = serviceResult.mUName;
 						conversationItemObject.mPwd = serviceResult.mPwd;
+						StringBuilder sb = new StringBuilder();
+						sb.append(conversationItemObject.mUid).append('_').append(conversationItemObject.mTarget).append('_').append(conversationItemObject.mServiceDate);
+						conversationItemObject.mServiceId = sb.toString();
+						DebugUtils.logD(TAG, "getConversationItemObject(JSONObject result) mServiceId " + conversationItemObject.mServiceId);
 						
 						if (IMHelper.TYPE_MESSAGE == type) {
 							if (conversationItemObject.mUid.equals(MyAccountManager.getInstance().getCurrentAccountUid())) {
@@ -400,6 +404,7 @@ public class IMService extends Service{
 				case IMHelper.TYPE_LOGIN: //登录失败
 					mIsConnected = false;
 					mIsRecLoginRes = true;
+					mWorkHandler.removeMessages(WHAT_CHECK_HEART_BEAT);
 					mWorkHandler.removeMessages(WHAT_SEND_MESSAGE_LOGIN);
 					mUiHandler.sendEmptyMessage(WHAT_SEND_MESSAGE_OFFLINE);
 					NotifyRegistrant.getInstance().notify(WHAT_SEND_MESSAGE_OFFLINE);
@@ -416,6 +421,7 @@ public class IMService extends Service{
 				case IMHelper.TYPE_LOGIN: //登录失败
 					mIsConnected = false;
 					mWorkHandler.removeMessages(WHAT_SEND_MESSAGE_LOGIN);
+					mWorkHandler.removeMessages(WHAT_CHECK_HEART_BEAT);
 					NotifyRegistrant.getInstance().notify(WHAT_SEND_MESSAGE_INVALID_USER);
 					return;
 				case IMHelper.TYPE_EXIT: //退出登录失败,目前暂时
@@ -467,7 +473,7 @@ public class IMService extends Service{
 		    	  if(mSocket == null){
 	  	  		    mSocket = new DatagramSocket(null);
 	  	  		    mSocket.setReuseAddress(true);
-	  	  		    mSocket.bind(new InetSocketAddress(8905)); //8904
+	  	  		    mSocket.bind(new InetSocketAddress(8904)); //8904
 		  	     }
 		    	 DebugUtils.logD(TAG, "准备接受UDP");
 				byte[] buffer = new byte[BUFFER_LENGTH];

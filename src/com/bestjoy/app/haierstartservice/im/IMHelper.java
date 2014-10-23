@@ -43,7 +43,7 @@ public class IMHelper {
 	public static final String EXTRA_TEXT = "text";
 	public static final String EXTRA_TOKEN = "n";
 	public static final String EXTRA_TARGET = "target";
-	public static final String EXTRA_SERVICE_TIME = "createtime";
+	public static final String EXTRA_SERVICE_TIME = "servicetime";
 	public static final String EXTRA_SERVICE_ID = "serviceid";
 	public static final String EXTRA_UNAME = "usrname";
 	
@@ -203,18 +203,10 @@ public class IMHelper {
 		ConversationItemObject conversationItemObject = new ConversationItemObject();
 		if (result != null) {
 			conversationItemObject.mMessage = result.optString(IMHelper.EXTRA_TEXT, "");
-			conversationItemObject.mServiceId = result.optString(IMHelper.EXTRA_SERVICE_ID, "");
 			conversationItemObject.mId = Integer.valueOf(result.optString(IMHelper.EXTRA_TOKEN, "-1"));
 			conversationItemObject.mTargetType = Integer.valueOf(result.optString(IMHelper.EXTRA_TYPE, "0"));
 			conversationItemObject.mTarget = result.optString(IMHelper.EXTRA_TARGET, "");
-			String timeStr = result.optString(IMHelper.EXTRA_SERVICE_TIME, "");
-			try {
-				Date date = SERVICE_DATE_TIME_FORMAT.parse(timeStr);
-				conversationItemObject.mServiceDate = date.getTime();
-				DebugUtils.logD(TAG, "getConversationItemObject convert timeStr " + timeStr + " to Date " + conversationItemObject.mServiceDate);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
+			conversationItemObject.mServiceDate = result.optLong(IMHelper.EXTRA_SERVICE_TIME, new Date().getTime());
 			return conversationItemObject;
 		}
 		//这里一般是不会走到的，所以我们打印出堆栈信息
@@ -249,20 +241,22 @@ public class IMHelper {
 					jsonObject = rows.getJSONObject(index);
 					conversationItemObject = new ConversationItemObject();
 					conversationItemObject.mMessageStatus = 1;
-					conversationItemObject.mServiceId = jsonObject.getString("mid");
+//					conversationItemObject.mServiceId = jsonObject.getString("mid");
 					conversationItemObject.mMessage = jsonObject.getString("mcontent");
 					conversationItemObject.mUid = jsonObject.getString("fuser");
 					conversationItemObject.mUName = jsonObject.getString("fname");
 					conversationItemObject.mTarget = jsonObject.getString("tuser");
 					conversationItemObject.mTargetType = targetType;
-					String timeStr = jsonObject.optString("mestime", "");
-					try {
-						Date date = SERVICE_DATE_TIME_FORMAT.parse(timeStr);
-						conversationItemObject.mServiceDate = date.getTime();
-						DebugUtils.logD(TAG, "getConversationItemObject convert timeStr " + timeStr + " to Date " + conversationItemObject.mServiceDate);
-					} catch (ParseException e) {
-						e.printStackTrace();
+					String timeStr = jsonObject.optString(IMHelper.EXTRA_SERVICE_TIME, "");
+					if (!TextUtils.isEmpty(timeStr)) {
+						conversationItemObject.mServiceDate = Long.parseLong(timeStr);
+					} else {
+						conversationItemObject.mServiceDate = new Date().getTime();
 					}
+					StringBuilder sb = new StringBuilder();
+					sb.append(conversationItemObject.mUid).append('_').append(conversationItemObject.mTarget).append('_').append(conversationItemObject.mServiceDate);
+					conversationItemObject.mServiceId = sb.toString();
+					DebugUtils.logD(TAG, "parseList() mServiceId " + conversationItemObject.mServiceId + ", mServiceDate " + conversationItemObject.mServiceDate);
 					list.add(conversationItemObject);
 				}
 			} catch (JSONException e) {

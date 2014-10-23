@@ -7,10 +7,10 @@
         </shape>
     </item>
     <item
-        android:bottom="0.5dip"
-        android:left="0.5dip"
-        android:right="0.5dip"
-        android:top="0.5dip">
+        android:bottom="1dip"
+        android:left="1dip"
+        android:right="1dip"
+        android:top="1dip">
         <shape>
             <solid android:color="#ffefefef" />
 

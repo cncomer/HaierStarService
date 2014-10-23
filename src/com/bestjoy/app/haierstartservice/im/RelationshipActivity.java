@@ -155,6 +155,8 @@ public class RelationshipActivity extends PullToRefreshListPageActivity{
 			mSortBtnByTime.setBackgroundDrawable(mSortBtnUnselectedBackground);
 			mSortBtnByTime.setTextColor(mSortBtnUnselectedTextColor);
 		}
+		mChecked.clear();
+		mSelectedRelationshipObjectSet.clear();
 		mQuery.qServiceUrl = HaierServiceObject.getRelationshipUrl(MyAccountManager.getInstance().getCurrentAccountUid(), MyAccountManager.getInstance().getAccountObject().mAccountPwd, mSortType);
 	}
 	@Override

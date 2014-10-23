@@ -423,6 +423,8 @@ public class ConversationListActivity extends LoadMoreWithPageActivity implement
 			message.mUName = MyAccountManager.getInstance().getAccountObject().mAccountName;
 			message.mTargetType = mRelationshipObject.mTargetType;
 			message.mTarget = mRelationshipObject.mTarget;
+			//由于按照服务器时间排序的，所以我们这里先假定服务器时间为手机当前时间
+			message.mServiceDate = new Date().getTime();
 			message.mMessage = text;
 			message.mMessageStatus = 0;
 			message.mSeen = ConversationItemObject.SEEN;
@@ -439,6 +441,8 @@ public class ConversationListActivity extends LoadMoreWithPageActivity implement
 			MyApplication.getInstance().showMessage(R.string.msg_im_status_logining);
 			return;
 		}
+		//由于按照服务器时间排序的，所以我们这里先假定服务器时间为手机当前时间
+		message.mServiceDate = new Date().getTime();
 		mImService.sendMessageAsync(message);
 	}
 	
