@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="model_my_idcard">我的名片</string>
-	<string name="model_new_baoxiucard">新建保修卡</string>
-    <string name="model_my_business">互动商圈</string>
+	<string name="model_new_baoxiucard">新建用户档案</string>
+    <string name="model_my_business">三方交互\n朋友圈</string>
     <string name="model_my_messages">消息中心</string>
-    <string name="model_my_store">我的微店</string>
+    <string name="model_my_store">我的店铺</string>
+    
+    <string name="model_my_idcard_en">My business card</string>
+	<string name="model_new_baoxiucard_en">New user card</string>
+    <string name="model_my_business_en">Circle of friends</string>
+    <string name="model_my_messages_en">Message Center</string>
+    <string name="model_my_store_en">My Store</string>
     
     
     <drawable name="model_my_idcard_n">#ff165ec0</drawable>
@@ -19,6 +25,6 @@
     <drawable name="model_my_messages_n">#ff6a16c0</drawable>
     <drawable name="model_my_messages_p">#ff270847</drawable>
     
-    <drawable name="model_my_store_n">#ffdabb0f</drawable>
-    <drawable name="model_my_store_p">#ffdabb0f</drawable>
+    <drawable name="model_my_store_n">#b2dabb0f</drawable>
+    <drawable name="model_my_store_p">#b2dabb0f</drawable>
 </resources>

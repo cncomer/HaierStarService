@@ -217,6 +217,6 @@ public abstract class BaseNoActionBarActivity extends NoActionBarCenterTitleActi
        }
        
        protected int getTitlebarLayout() {
-   		return R.layout.black_title_bar;
+   		return R.layout.blue_title_bar;
    	}
 }
