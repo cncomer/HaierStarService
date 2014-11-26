@@ -25,6 +25,6 @@
     <drawable name="model_my_messages_n">#ff6a16c0</drawable>
     <drawable name="model_my_messages_p">#ff270847</drawable>
     
-    <drawable name="model_my_store_n">#b2dabb0f</drawable>
-    <drawable name="model_my_store_p">#b2dabb0f</drawable>
+    <drawable name="model_my_store_n">#ffdabb0f</drawable>
+    <drawable name="model_my_store_p">#ffdabb0f</drawable>
 </resources>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">在线服务平台</string>
-    <string name="app_name_2014">在线服务平台 2014</string>
+    <string name="app_name">电子保修卡直销员</string>
+    <string name="app_name_2014">电子保修卡直销员 2014</string>
     <string name="app_id">541aafb6</string>
     <string name="button_register">新用户注册</string>
      <string name="button_find_password">找回密码</string>
@@ -402,7 +402,7 @@
           <string name="menu_fullscreen">全屏</string>
           <string name="menu_fullscreen2">全屏</string>
           
-          <string name="menu_ymessage">广播</string>
+          <string name="menu_ymessage">消息中心</string>
           <string name="salesman_title">销售员</string>
           <string name="serverman_title">服务员</string>
           <string name="result_address_book">找到联系人信息</string>
@@ -483,4 +483,6 @@
       <string name="msg_no_receiver">请至少选择一个接收者</string>
       <string name="format_send_to_some">"发送给:%1$s(共%2$s人)"</string>
       <string name="format_send_to_many">发送给:%1$s...(共%2$s人)</string>
+      
+      <string name="msg_no_selection_for_delete">请至少选择一个</string>
 </resources>

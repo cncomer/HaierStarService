@@ -167,16 +167,14 @@ public abstract class LoadMoreWithPageActivity extends BaseNoActionBarActivity i
 					list.onScroll(view, firstVisibleItem, visibleItemCount, totalItemCount);
 				}
 				if (totalItemCount > 0) {
-					if (firstVisibleItem == 0 && firstVisibleItem + visibleItemCount == totalItemCount) {
-						mIsAtListBottom = true;
-					} else if (firstVisibleItem > 0 && firstVisibleItem + visibleItemCount < totalItemCount) {
+					if (firstVisibleItem > 0 && firstVisibleItem + visibleItemCount < totalItemCount) {
 						mIsAtListBottom = false;
 					} else {
 						mIsAtListBottom = true;
 					}
 					
 				} else {
-					mIsAtListBottom = false;
+					mIsAtListBottom = true;
 				}
 				mIsAtListTop = firstVisibleItem == 0;
 				
